@@ -1,0 +1,34 @@
+<mat-form-field appearance="outline" [ngClass]="{'input-margin-top': props['className'] === 'input-margin-top'}">
+    <mat-label class="label-autocomplete" [ngClass]="props['className']">{{ label }}
+        <span *ngIf="required" class="mat-label-optional">*</span>
+        <span *ngIf="tooltip" class="label-tooltip">
+            <span matSuffix class="material-symbols-outlined help" [matTooltip]="tooltip">help</span>
+        </span>
+    </mat-label>
+    <input type="text" matInput [placeholder]="placeholder" [formControl]="formControl" [formlyAttributes]="field"
+        (input)="handleFilter($event)" [(ngModel)]="value" [matAutocomplete]="auto" (blur)="onBlur()" #inputTrigger />
+    <span matSuffix class="material-symbols-outlined refresh-icon" *ngIf="loading">autorenew</span>
+    <span matSuffix class="material-symbols-outlined close" *ngIf="!loading && value !== ''" (click)="value=''"
+        tabindex="0" role="button" (keydown)="value=''">close
+    </span>
+
+    <mat-autocomplete #auto="matAutocomplete" id="autocomplete-list" [displayWith]="displayFunction.bind(this)"
+        role="listbox" (optionSelected)="onOptionSelected($event)">
+        <mat-option *ngFor="let dataItem of data" [value]="dataItem[valueProp]" role="option"
+            [attr.aria-selected]="isSelected(dataItem)">
+            <ng-container [ngTemplateOutlet]="template"
+                [ngTemplateOutletContext]="{ $implicit: dataItem, dataItem: dataItem }">
+            </ng-container>
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+<!-- Default template for displaying items -->
+<ng-template #defaultTemplate let-dataItem>
+    <span class="template">{{ dataItem[labelProp] }}</span>
+</ng-template>
+
+<!-- Custom template for accounts -->
+<ng-template #accountTemplate let-dataItem>
+    <span class="template">{{ dataItem['name'] + ' (' + dataItem['accountCode'] + ')' }}</span>
+</ng-template>

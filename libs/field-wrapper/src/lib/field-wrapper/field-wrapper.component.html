@@ -1,0 +1,10 @@
+<div [class.has-error]="showError" [ngClass]="{'status-fill': !props['onlyPicker']}">
+    <div class="field-content">
+        <ng-container #fieldComponent></ng-container>
+    </div>
+</div>
+
+<div *ngIf="showError" class="error-wrapper">
+    <em class="fal fa-circle-xmark"></em>
+    <formly-validation-message [field]="field"></formly-validation-message>
+</div>

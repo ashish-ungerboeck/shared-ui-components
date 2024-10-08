@@ -1,0 +1,10 @@
+<mat-form-field appearance="outline">
+    <mat-label class="label-textarea" [attr.for]="field.id">{{ label }}
+        <span *ngIf="required" class="mat-label-optional" aria-hidden="true">*</span>
+    </mat-label>
+    <textarea matInput [formControl]="formControl" [placeholder]="placeholder" [readonly]="readonly"
+        [maxlength]="maxCharLength" [rows]="textareaRow" [attr.id]="field.id" [attr.aria-required]="required"
+        [attr.aria-invalid]="formControl.invalid ? 'true' : null" [attr.aria-describedby]="getAriaDescribedBy()">
+    </textarea>
+    <mat-hint *ngIf="tooltip">{{ tooltip }}</mat-hint>
+</mat-form-field>

@@ -1,0 +1,6 @@
+<button mat-raised-button fillMode="outline" [ngClass]="'button btn btn-' + props['btnType'] +' '+ props['customCls']"
+    (click)="onClick($event)">
+    <em *ngIf="props['prefixIcon']" [ngClass]="props['prefixIcon']"></em>
+    <span class="button-text">{{ props['text'] }}</span>
+    <em *ngIf="props['suffixIcon']" [ngClass]="props['suffixIcon']"></em>
+</button>

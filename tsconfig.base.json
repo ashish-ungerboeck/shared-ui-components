@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@shared-material-ui-library/autocomplete": [
+        "libs/autocomplete/src/index.ts"
+      ],
+      "@shared-material-ui-library/button": ["libs/button/src/index.ts"],
+      "@shared-material-ui-library/date-picker": [
+        "libs/date-picker/src/index.ts"
+      ],
+      "@shared-material-ui-library/field-wrapper": [
+        "libs/field-wrapper/src/index.ts"
+      ],
+      "@shared-material-ui-library/select": ["libs/select/src/index.ts"],
+      "@shared-material-ui-library/text-input": [
+        "libs/text-input/src/index.ts"
+      ],
+      "@shared-material-ui-library/textarea": ["libs/textarea/src/index.ts"],
+      "m-text-input": ["libs/text-input/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

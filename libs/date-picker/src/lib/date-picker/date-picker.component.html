@@ -1,0 +1,7 @@
+<mat-form-field>
+    <mat-label>{{ label }}</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="formControl" [formlyAttributes]="field"
+        [required]="required" [placeholder]="'year-month-day'" (dateChange)="onDateSelect()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
