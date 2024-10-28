@@ -30,7 +30,15 @@
         "libs/text-input/src/index.ts"
       ],
       "@shared-material-ui-library/textarea": ["libs/textarea/src/index.ts"],
-      "m-text-input": ["libs/text-input/src/index.ts"]
+      "m-autocomplete": ["libs/autocomplete/src/index.ts"],
+      "m-button": ["libs/button/src/index.ts"],
+      "m-date-picker": ["libs/date-picker/src/index.ts"],
+      "m-drag-drop-list": ["libs/drag-drop-list/src/index.ts"],
+      "m-file-select": ["libs/file-select/src/index.ts"],
+      "m-multi-select": ["libs/multi-select/src/index.ts"],
+      "m-password-input": ["libs/password-input/src/index.ts"],
+      "m-text-input": ["libs/text-input/src/index.ts"],
+      "m-textarea": ["libs/textarea/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

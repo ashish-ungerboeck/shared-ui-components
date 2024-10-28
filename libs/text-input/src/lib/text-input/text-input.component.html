@@ -3,7 +3,7 @@
         <span *ngIf="required && !hideRequiredMarker" class="mat-label-optional" aria-hidden="true">*</span>
     </mat-label>
     <input matInput *ngIf="formControl" [attr.id]="field.id" [attr.aria-required]="required" [placeholder]="placeholder"
-        (ngModelChange)="valueChange($event)" (keypress)="onKeyPress($event)" (blur)="onBlur()"
+        (change)="valueChange($event)" (keypress)="onKeyPress($event)" (blur)="onBlur()"
         [formControl]="formControl" [maxlength]="maxCharLength"
         [attr.aria-invalid]="formControl.invalid ? 'true' : null" [attr.aria-describedby]="getAriaDescribedBy()" />
     <mat-hint *ngIf="tooltip" [ngClass]="tooltipClass">{{ tooltip }}</mat-hint>

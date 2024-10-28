@@ -17,6 +17,7 @@
     "@angular/router": "~18.2.0",
     "@ngx-formly/core": "^6.3.7",
     "@ngx-formly/material": "^6.3.7",
+    "primeng": "^17.18.11",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

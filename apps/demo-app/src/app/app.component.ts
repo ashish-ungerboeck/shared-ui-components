@@ -7,6 +7,9 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { ButtonComponent } from '@shared-material-ui-library/button';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DragDropListComponent } from 'm-drag-drop-list';
 
 @Component({
   standalone: true,
@@ -19,7 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
     CustomFormlyModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    ButtonComponent
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -33,7 +37,29 @@ export class AppComponent implements OnInit {
 
   public outlook_event_subject = [
     { "Name": "Name of the event", "Id": "name_of_the_event" },
-    { "Name": "Default subject specified", "Id": "default_subject_specified" }]
+    { "Name": "Default subject specified", "Id": "default_subject_specified" }
+  ]
+
+  public event_names = [
+    { "name": "Birthday", "id": "birthday" },
+    { "name": "Wedding", "id": "wedding" },
+    { "name": "Engagement", "id": "engagement" },
+    { "name": "Conference", "id": "conference" }
+  ]
+
+  public spacesListData = [
+    { name: 'Item 1', code: 'ITM001' },
+    { name: 'Item 2', code: 'ITM002' },
+    { name: 'Item 3', code: 'ITM003' },
+    { name: 'Item 4', code: 'ITM004' },
+    { name: 'Item 5', code: 'ITM005' }
+  ];
+
+  public selectedSpaces = [];
+
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.addFormFields();
@@ -50,11 +76,17 @@ export class AppComponent implements OnInit {
         }
       },
       {
+        key: 'password',
+        type: 'password',
+        props: {
+          label: 'Password',
+        }
+      },
+      {
         type: 'date',
         key: 'created',
         props: {
           label: 'Created On',
-          dateFormat: 'yyyy-MM-dd'
         }
       },
       {
@@ -70,6 +102,33 @@ export class AppComponent implements OnInit {
         }
       },
       {
+        type: 'multi-select',
+        key: 'activityType',
+        props: {
+          label: 'Activity Types',
+          required: true,
+          labelProp: 'name',
+          valueProp: 'id',
+          valuePrimitive: false
+        },
+        hooks: {
+          onInit: (field: FormlyFieldConfig) => {
+            if (field.props) {
+              field.props.options = this.event_names
+            }
+          }
+        }
+      },
+      {
+        key: 'certificate',
+        type: 'file-select',
+        props: {
+          label: 'Certificate',
+          required: true,
+          fileRestrictions: ['.pdf']
+        }
+      },
+      {
         key: 'comment',
         type: 'textarea',
         props: {
@@ -77,6 +136,45 @@ export class AppComponent implements OnInit {
           required: true
         }
       },
+      {
+        type: 'button',
+        className: 'manage-spaces-button',
+        props: {
+          text: 'Map Spaces',
+          btnType: 'secondary',
+          prefixIcon: 'fal fa-edit',
+          onClick: () => {
+            const data = {
+              module: 'Venues',
+              title: 'Manage Venue Spaces',
+              listbox1SearchLabel: 'Search Available Spaces',
+              listbox1SearchPlaceholder: 'Search Available Spaces',
+              columnKeys: ['baseCombo', 'name'],
+              filterByKeys: 'baseCombo,name',
+              listBoxHeaderData: { baseCombo: 'Base Combo', name: 'Space Name', isHeader: true },
+              data1: [...this.spacesListData],
+              listbox2SearchLabel: 'Search Selected Spaces',
+              listbox2SearchPlaceholder: 'Search Selected Spaces',
+              data2: [...this.selectedSpaces]
+            };
+
+            const config: MatDialogConfig = {
+              maxWidth: window.innerWidth >= 900 ? 900 : window.innerWidth,
+              minWidth: window.innerWidth >= 900 ? 900 : window.innerWidth
+            };
+
+            const dialogRef = this.dialog.open(DragDropListComponent, {
+              data: data,
+              ...config
+            });
+
+            // Close event
+            dialogRef.afterClosed().subscribe((response) => {
+              console.log(response);
+            });
+          },
+        }
+      }
     ];
   }
 

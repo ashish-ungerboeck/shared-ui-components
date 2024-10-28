@@ -1,0 +1,33 @@
+<ng-template #header let-win>
+    <div>{{ configData.title }}</div>
+    <div>
+        <mat-icon role="button" class="clear-icon">close</mat-icon>
+    </div>
+</ng-template>
+
+<p-pickList [source]="configData.data1" [target]="configData.data2" [sourceHeader]="configData.listbox1SearchLabel"
+    [targetHeader]="configData.listbox2SearchLabel" [responsive]="true" [sourceStyle]="{'height':'30vh'}"
+    [targetStyle]="{'height':'30vh'}" [filterBy]="configData.filterByKeys"
+    [sourceFilterPlaceholder]="configData.listbox1SearchPlaceholder"
+    [targetFilterPlaceholder]="configData.listbox2SearchPlaceholder" [showSourceControls]="false"
+    [showTargetControls]="false">
+    <ng-template let-dataItem pTemplate="item">
+        <div
+            [ngClass]="{'lRowCls': configData.module === 'Venues', 'referencesRowCls': configData.module !== 'Venues'}">
+            <div [ngClass]="{'space-name-col': configData.module === 'Venues' && column === 'name' && !dataItem?.isActive}"
+                class="column" [title]="dataItem[column]" *ngFor="let column of configData?.columnKeys">
+                <div class="ellipsis">{{ dataItem[column] }}</div>
+                <span matTooltip="Inactive"
+                    *ngIf="configData.module === 'Venues' && column === 'name' && !dataItem?.isActive"
+                    class="status-color inactive"></span>
+            </div>
+        </div>
+    </ng-template>
+</p-pickList>
+
+<ng-container controls>
+    <div class="controls transparent-background">
+        <button (click)="btnCancelClick()" class="secondary">Cancel</button>
+        <button (click)="btnSaveClick()">Save</button>
+    </div>
+</ng-container>

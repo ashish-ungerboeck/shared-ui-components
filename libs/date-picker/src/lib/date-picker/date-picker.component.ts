@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatNativeDateModule
   ],
   templateUrl: './date-picker.component.html',
-  styleUrl: './date-picker.component.css',
+  styleUrl: './date-picker.component.scss',
 })
 export class DatePickerComponent extends FieldType<FieldTypeConfig> {
   datePickerPopupSettings = {

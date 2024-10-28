@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule
   ],
   templateUrl: './textarea.component.html',
-  styleUrl: './textarea.component.css',
+  styleUrl: './textarea.component.scss',
 })
 export class TextareaComponent extends FieldType<FieldTypeConfig> {
 

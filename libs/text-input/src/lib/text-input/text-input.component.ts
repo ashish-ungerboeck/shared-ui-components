@@ -18,7 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule
   ],
   templateUrl: './text-input.component.html',
-  styleUrl: './text-input.component.css',
+  styleUrl: './text-input.component.scss',
 })
 export class TextInputComponent extends FieldType<FieldTypeConfig> {
 
@@ -26,7 +26,7 @@ export class TextInputComponent extends FieldType<FieldTypeConfig> {
     super();
   }
 
-  valueChange(eve: KeyboardEvent) {
+  valueChange(eve: Event) {
     if (this.props['valueChange']) {
       this.props['valueChange'](eve, this.field);
     }

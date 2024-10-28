@@ -1,0 +1,31 @@
+<div class="mat-form full-width">
+    <div class="file-label-wrapper">
+        <mat-label class="mat-label">
+            {{ label }}
+            <span *ngIf="required && !hideRequiredMarker" class="mat-label-optional">*</span>
+        </mat-label>
+    </div>
+    <div class="file-input-wrapper">
+        <!-- File upload button -->
+        <button mat-raised-button color="primary" (click)="fileInput.click()" (keyup.enter)="fileInput.click()"
+            (keyup.space)="fileInput.click()" aria-label="Choose file" tabindex="0">
+            Choose File
+        </button>
+
+        <!-- Hidden file input -->
+        <input type="file" #fileInput (change)="onFileChange($event)" [formControl]="formControl"
+            [formlyAttributes]="field" [multiple]="multiple" [attr.accept]="allowedExtensions" hidden
+            aria-hidden="true" />
+
+        <!-- File name display -->
+        <span class="file-name" [attr.aria-live]="selectedFileName ? 'polite' : 'off'" aria-atomic="true"
+            [attr.aria-label]="selectedFileName ? 'File selected: ' + selectedFileName : 'No file chosen'">
+            {{ selectedFileName || 'No file chosen' }}
+        </span>
+
+        <!-- Remove button appears only when a file is selected -->
+        <mat-icon matSuffix *ngIf="selectedFileName" (click)="removeFile()" matTooltip="Remove"
+            aria-label="Remove selected file" (keyup.enter)="removeFile()" (keyup.space)="removeFile()"
+            tabindex="0">close</mat-icon>
+    </div>
+</div>

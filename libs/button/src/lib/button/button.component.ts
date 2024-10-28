@@ -1,13 +1,14 @@
 import { Component, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FormlyModule } from '@ngx-formly/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'lib-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormlyModule, MatButtonModule],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.css',
+  styleUrl: './button.component.scss',
 })
 export class ButtonComponent extends FieldType {
   @HostBinding('class.disabled')
@@ -21,5 +22,7 @@ export class ButtonComponent extends FieldType {
     }
   }
 
-  public get icon(): string { return this.props['prefixIcon'] !== undefined ? this.props['prefixIcon'] : ''; }
+  public get prefixIcon(): string { return this.props['prefixIcon'] ?? ''; }
+  public get suffixIcon(): string { return this.props['suffixIcon'] ?? ''; }
+  public get text(): string { return this.props['text'] ?? ''; }
 }

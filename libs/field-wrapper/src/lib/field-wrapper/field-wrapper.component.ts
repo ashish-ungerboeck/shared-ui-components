@@ -7,7 +7,7 @@ import { FieldWrapper, FormlyModule } from '@ngx-formly/core';
   standalone: true,
   imports: [CommonModule, FormlyModule],
   templateUrl: './field-wrapper.component.html',
-  styleUrl: './field-wrapper.component.css',
+  styleUrl: './field-wrapper.component.scss',
 })
 export class FieldWrapperComponent extends FieldWrapper {
   @HostBinding('class.focused') focused = false;

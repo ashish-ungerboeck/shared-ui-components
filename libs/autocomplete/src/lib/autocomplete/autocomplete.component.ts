@@ -7,25 +7,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocomplete, MatAutocompleteModule, MatAutocompleteTrigger, MatOption } from '@angular/material/autocomplete';
 import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'lib-autocomplete',
   standalone: true,
   imports: [
-    CommonModule, 
-    FormsModule, 
-    ReactiveFormsModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatAutocompleteModule,
     MatTooltipModule,
     MatIconModule,
     FormlyModule
   ],
   templateUrl: './autocomplete.component.html',
-  styleUrl: './autocomplete.component.css',
+  styleUrl: './autocomplete.component.scss',
 })
 export class AutocompleteComponent extends FieldType<FieldTypeConfig> implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatAutocompleteTrigger, { static: true }) inputTrigger!: MatAutocompleteTrigger; // Reference to the input

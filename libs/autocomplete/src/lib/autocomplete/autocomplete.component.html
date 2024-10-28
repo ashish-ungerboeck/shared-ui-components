@@ -2,15 +2,15 @@
     <mat-label class="label-autocomplete" [ngClass]="props['className']">{{ label }}
         <span *ngIf="required" class="mat-label-optional">*</span>
         <span *ngIf="tooltip" class="label-tooltip">
-            <span matSuffix class="material-symbols-outlined help" [matTooltip]="tooltip">help</span>
+            <mat-icon matSuffix [matTooltip]="tooltip">help</mat-icon>
         </span>
     </mat-label>
     <input type="text" matInput [placeholder]="placeholder" [formControl]="formControl" [formlyAttributes]="field"
         (input)="handleFilter($event)" [(ngModel)]="value" [matAutocomplete]="auto" (blur)="onBlur()" #inputTrigger />
-    <span matSuffix class="material-symbols-outlined refresh-icon" *ngIf="loading">autorenew</span>
-    <span matSuffix class="material-symbols-outlined close" *ngIf="!loading && value !== ''" (click)="value=''"
-        tabindex="0" role="button" (keydown)="value=''">close
-    </span>
+
+    <mat-icon matSuffix [style.visibility]="loading ? 'visible' : 'hidden'">autorenew</mat-icon>
+    <mat-icon matSuffix [style.visibility]="!loading && value !== '' ? 'visible' : 'hidden'" (click)="value=''"
+        tabindex="0" role="button" class="clear-icon">close</mat-icon>
 
     <mat-autocomplete #auto="matAutocomplete" id="autocomplete-list" [displayWith]="displayFunction.bind(this)"
         role="listbox" (optionSelected)="onOptionSelected($event)">

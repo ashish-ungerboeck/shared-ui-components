@@ -8,6 +8,9 @@ import { ButtonComponent } from '@shared-material-ui-library/button';
 import { AutocompleteComponent } from '@shared-material-ui-library/autocomplete';
 import { FieldWrapperComponent } from '@shared-material-ui-library/field-wrapper';
 import { DatePickerComponent } from '@shared-material-ui-library/date-picker';
+import { PasswordInputComponent } from 'm-password-input';
+import { MultiSelectComponent } from 'm-multi-select';
+import { FileSelectComponent } from 'm-file-select';
 
 @NgModule({
   declarations: [],
@@ -36,6 +39,21 @@ import { DatePickerComponent } from '@shared-material-ui-library/date-picker';
         {
           name: 'date',
           component: DatePickerComponent,
+          wrappers: ['field-wrapper']
+        },
+        {
+          name: 'password',
+          component: PasswordInputComponent,
+          wrappers: ['field-wrapper']
+        },
+        {
+          name: 'multi-select',
+          component: MultiSelectComponent,
+          wrappers: ['field-wrapper']
+        },
+        {
+          name: 'file-select',
+          component: FileSelectComponent,
           wrappers: ['field-wrapper']
         },
         {

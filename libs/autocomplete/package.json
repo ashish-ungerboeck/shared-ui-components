@@ -1,0 +1,13 @@
+{
+  "name": "m-autocomplete-input",
+  "version": "0.0.3",
+  "peerDependencies": {
+    "@angular/common": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "@angular/forms": "~18.2.0",
+    "@angular/material": "~18.2.6",
+    "@angular/platform-browser": "~18.2.0",
+    "@ngx-formly/core": "^6.3.7"
+  },
+  "sideEffects": false
+}
