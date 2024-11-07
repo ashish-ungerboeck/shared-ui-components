@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("PlusJakartaSans-VariableFont_wght.ttf") format("truetype");
+  
+}
+
+
+
+body, button, input, isindex, keygen, select, textarea {
+    font-family: Plus Jakarta Sans, sans-serif !important;
+}
+
+body{
+        font-size: 16rem !important;
+    font-weight: 400 !important;
+    line-height: 1.6180339888 !important;
+    background: #F9F6F7 !important;
+}
+.qv-panel-sheet .sheet-title-container {
+    color: #FFF !important;
+    background: linear-gradient(119deg, #4146e0, #5a49e0 14%, #6d4de1 29%, #7d52e1 43%, #8c56e2 57%, #995be2 71%, #a660e2 86%, #b166e3) !important;
+}
+
+.qv-sheet{
+    background: #F9F6F7 !important;
+}
+
+
+.qv-object {
+border:0px !important;
+border-radius: 0px !important;
+}
+
+
+
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+    -webkit-text-fill-color: transparent !important;
+    -webkit-background-clip: text !important;
+    background-image: linear-gradient(100deg, #4146e0, #5a49e0 14%, #6d4de1 29%, #7d52e1 43%, #8c56e2 57%, #995be2 71%, #a660e2 86%, #b166e3) !important;
+    display: inline !important;
+}
+
+
+
+/* Object Title color */
+.qv-object .qv-object-title,
+.qv-object .qv-object-subtitle,
+.qv-object .qv-object-footnote,
+.qv-viz-disclaimer {
+    font-weight: normal !important;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(100deg, #4146e0, #5a49e0 14%, #6d4de1 29%, #7d52e1 43%, #8c56e2 57%, #995be2 71%, #a660e2 86%, #b166e3);
+    display: inline;
+}
+
