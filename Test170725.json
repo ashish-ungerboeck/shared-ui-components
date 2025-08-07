@@ -1,0 +1,60 @@
+
+SHEETS
+
+OBJECTS ON SHEETS
+
+DIMENSIONS
+
+MEASURES
+
+VARIABLES
+{"qName":"matches","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"2c96994b-9125-4044-a28f-c2fe6f266590","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"name","qDefinition":"space_master_data (1)","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"09f830d8-fc88-4074-841f-abc014c1d599","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"currentName","qDefinition":"space_master_data (1)","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"001f1cb0-e73a-4ca0-b273-ea32cf2fd19f","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"index","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"eddcc47e-6458-4d12-ae93-7e74719b5cc4","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+
+FIELDS
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":38,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":3,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":3,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":3,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":26,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$ascii","$text","$hidden","$system"],"qSrcTables":[]}
+{"qName":"Booking ID","qCardinal":7621,"qTags":["$numeric","$integer"],"qSrcTables":["EventBooking"]}
+{"qName":"Event ID","qCardinal":3182,"qTags":["$ascii","$text"],"qSrcTables":["EventBooking"]}
+{"qName":"Space ID","qCardinal":100,"qTags":["$ascii","$text"],"qSrcTables":["EventBooking"]}
+{"qName":"Date of Booking","qCardinal":318,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["EventBooking"]}
+{"qName":"Start Time","qCardinal":24,"qTags":["$numeric"],"qSrcTables":["EventBooking"]}
+{"qName":"End Time","qCardinal":24,"qTags":["$numeric"],"qSrcTables":["EventBooking"]}
+{"qName":"Number of Pax","qCardinal":946,"qTags":["$numeric","$integer"],"qSrcTables":["EventBooking"]}
+{"qName":"Booking Revenue","qCardinal":5000,"qTags":["$numeric"],"qSrcTables":["EventBooking"]}
+{"qName":"Order Type","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["EventBooking"]}
+{"qName":"Sale Channel","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["EventBooking"]}
+{"qName":"Target Revenue","qCardinal":946,"qTags":["$numeric","$integer"],"qSrcTables":["EventBooking"]}
+{"qName":"F12","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F13","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F14","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F15","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F16","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F17","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F18","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F19","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F20","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F21","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F22","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F23","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F24","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F25","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"F26","qCardinal":0,"qTags":[],"qSrcTables":["EventBooking"]}
+{"qName":"DummyField","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["INLFED"]}
+{"qName":"@1","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["space_master_data (1)"]}
+{"qName":"@2","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["space_master_data (1)"]}
+{"qName":"@3","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["space_master_data (1)"]}
+{"qName":"@4","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["space_master_data (1)"]}
+{"qName":"@5","qCardinal":16,"qTags":["$ascii","$text"],"qSrcTables":["space_master_data (1)"]}
+{"qName":"@6","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["space_master_data (1)"]}
+{"qName":"@7","qCardinal":33,"qTags":["$ascii","$text","$geoname","$relates_space_master_data (1).@7_GeoInfo"],"qSrcTables":["space_master_data (1)"]}
+{"qName":"@8","qCardinal":257,"qTags":["$text","$geoname","$relates_space_master_data (1).@8_GeoInfo"],"qSrcTables":["space_master_data (1)"]}
+{"qName":"@9","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["space_master_data (1)"]}
+{"qIsHidden":true,"qName":"space_master_data (1).@7_GeoInfo","qCardinal":33,"qTags":["$ascii","$text","$hidden","$geopolygon","$relates_@7"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"space_master_data (1).@8_GeoInfo","qCardinal":226,"qTags":["$ascii","$text","$geopoint","$hidden","$relates_@8"],"qSrcTables":[]}
