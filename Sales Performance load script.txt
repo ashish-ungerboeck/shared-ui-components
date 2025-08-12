@@ -1,0 +1,446 @@
+///$tab Main
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='$ ###0.00;-$ ###0.00';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='M/D/YYYY';
+SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET FirstWeekDay=6;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-US';
+SET CreateSearchIndexOnReload=1;
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
+
+
+Let vStartDate=Num(Date(yearstart(AddYears(Today(),-3))));
+//Let vEndDate=Num(Date(Today()));
+
+Let vEndDate=Num(Date(YearEnd(AddYears(Today(),3))));
+
+
+///$tab Section Access
+ 
+// SECTION ACCESS;
+
+// LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+
+// [QlikUserGroupInfo]:
+// LOAD Trim(Upper(ACCESS)) as ACCESS,  
+// 	Trim(UPPER([USER.EMAIL])) as [USER.EMAIL], 
+// 	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;
+
+// SELECT ACCESS,
+// 	"USER.EMAIL",
+// 	"REDUCTION_EMAIL"
+// FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+
+// SECTION APPLICATION;
+
+
+
+
+///$tab Mapping
+LIB CONNECT TO 'Dev_Space:Snowflake_Sales_Perfomance';
+//LIB CONNECT TO 'Dev_Test_Space:Snowflake_gomomentus-us_prod.snowflakecomputing.com';
+
+
+[DIM_EVENT_TYPES]:
+Mapping LOAD 
+	Trim(Upper(EVENT_TYPE_CODE)), 
+    EVENT_TYPE;
+SELECT "EVENT_TYPE_CODE",
+	   "EVENT_TYPE",
+FROM "MARTS"."SHARED"."DIM_EVENT_TYPES";
+
+[DIM_SALESPERSON]:
+Mapping LOAD 
+			SALESPERSON_ACCOUNT_CODE,
+            SALESPERSON_ACCOUNT_FULL_NAME;          
+SELECT 	"SALESPERSON_ACCOUNT_CODE",
+        "SALESPERSON_ACCOUNT_FULL_NAME"
+FROM "MARTS"."SHARED"."DIM_SALESPERSON"
+WHERE SALESPERSON_DESIGNATION = '1' AND SALESPERSON_STATUS = 'A' AND SALESPERSON_CLASS = 'P';
+
+[DIM_SALES_CHANNEL]:
+Mapping LOAD Trim(Upper(LEAD_SOURCE_CODE)), 
+	 		 LEAD_SOURCE_DESCRIPTION;
+SELECT "LEAD_SOURCE_CODE" ,
+	"LEAD_SOURCE_DESCRIPTION"
+FROM "MARTS"."SHARED"."DIM_SALES_CHANNEL";
+
+[DIM_SPACE_DETAILS]:
+Load  SPACE_CODE, 
+	  SPACE_NAME,
+      SPACE_TYPE_CODE,
+      SPACE_NET_AREA;
+Select SPACE_CODE, 
+	   SPACE_NAME,
+       SPACE_TYPE_CODE,
+      SPACE_NET_AREA
+From "MARTS"."SHARED"."DIM_SPACE_DETAILS";
+
+Space_Name:
+Mapping Load SPACE_CODE,
+			 SPACE_NAME
+Resident DIM_SPACE_DETAILS;   
+
+Space_Type:
+Mapping Load SPACE_CODE,
+			 SPACE_TYPE_CODE
+Resident DIM_SPACE_DETAILS; 
+
+SQ_FT:
+Mapping Load SPACE_CODE,
+			 SPACE_NET_AREA
+Resident DIM_SPACE_DETAILS;             
+
+Drop Table DIM_SPACE_DETAILS;
+
+[DIM_SPACE_TYPE]:
+Mapping LOAD "SPACE_TYPE_CODE",
+	         "SPACE_TYPE";
+SELECT "SPACE_TYPE_CODE",
+	"SPACE_TYPE",
+	"TENANT_ID"
+FROM "MARTS"."SHARED"."DIM_SPACE_TYPES";
+
+Target:
+Mapping Load SALES_GOAL_EVENT_ID,
+	 SALES_GOAL_TOTAL_AMOUNT;
+SELECT 
+	"SALES_GOAL_EVENT_ID",
+	"SALES_GOAL_TOTAL_AMOUNT"
+FROM "MARTS"."SHARED"."DIM_SALES_GOAL";
+
+[DIM_REVENUE_ELEMENT]:
+Mapping LOAD 
+	DEPARTMENT_CODE, 
+	REVENUE_ELEMENT_NAME; 
+
+SELECT 
+	"DEPARTMENT_CODE",
+	"REVENUE_ELEMENT_NAME"
+FROM "MARTS"."SHARED"."DIM_REVENUE_ELEMENT";
+
+///$tab Facts
+//LIB CONNECT TO 'Dev_Space:Snowflake_Sales_Perfomance';
+//LIB CONNECT TO 'Dev_Test_Space:Snowflake_gomomentus-us_prod.snowflakecomputing.com';
+
+[FACT_RETENTION_RATE]:
+LOAD BOOKED_VENUE as SPACE_CODE, 
+	Date(Floor(BOOKING_MONTH)) AS link_Date, 
+    Date(Floor(BOOKING_MONTH)) AS BOOKING_MONTH, 
+	YEARS_SINCE_FIRST_BOOKING,
+    'Retention' AS Flag,
+    'Event Date' AS Type,
+   Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
+    Where Date(Floor(BOOKING_MONTH))>=$(vStartDate)<=$(vEndDate);
+
+SELECT "CUSTOMER_NUMBER",
+	"BOOKED_VENUE",
+	"BOOKING_MONTH",
+	"TENANT_ID",
+	"YEARS_SINCE_FIRST_BOOKING",
+    REDUCTION_EMAIL
+FROM "MARTS"."SALES_PERFORMANCE"."FACT_RETENTION_RATE" ;
+
+Concatenate
+[FACT_RETENTION_RATE]:
+LOAD BOOKED_VENUE as SPACE_CODE, 
+	Date(Floor(BOOKING_MONTH)) AS link_Date, 
+    Date(Floor(BOOKING_MONTH)) AS BOOKING_MONTH, 
+	YEARS_SINCE_FIRST_BOOKING,
+    'Retention' AS Flag,
+    'Booking Date' AS Type,
+   Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
+    Where Date(Floor(BOOKING_MONTH))>=$(vStartDate)<=$(vEndDate);
+
+SELECT "CUSTOMER_NUMBER",
+	"BOOKED_VENUE",
+	"BOOKING_MONTH",
+	"TENANT_ID",
+	"YEARS_SINCE_FIRST_BOOKING",
+    REDUCTION_EMAIL
+FROM "MARTS"."SALES_PERFORMANCE"."FACT_RETENTION_RATE" ;
+
+Concatenate
+[FACT_REVENUE]:
+LOAD Date(Floor(EVENT_START_DATE)) AS link_Date,
+	//Date(Floor(EVENT_START_DATE)) AS EVENT_START_DATE,
+	SALESPERSON_ACCOUNT_CODE, 
+	SPACE_CODE, 
+    SPACE_TYPE_CODE, 
+	EVENT_ID,
+    EVENT_ID as REV_EVENT_ID,
+	EVENT_TYPE_CODE, 
+	LEAD_SOURCE_CODE, 
+	REVENUE_AMOUNT,
+    DEPARTMENT_CODE,
+    ApplyMap('Target',EVENT_ID,0) AS TARGET_REVENUE,
+    'Event Revenue' AS Flag,
+    'Event Date'			AS Type,
+    Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
+	Where Num(EVENT_START_DATE)>= $(vStartDate)<=$(vEndDate) ;
+    
+SELECT "EVENT_BOOKING_DATE",
+	"EVENT_START_DATE",
+	"EVENT_END_DATE",
+	"SALESPERSON_ACCOUNT_CODE",
+	"SPACE_CODE",
+     "SPACE_TYPE_CODE",
+	"EVENT_ID",
+	"EVENT_TYPE_CODE",
+	"LEAD_SOURCE_CODE",
+	"TENANT_ID",
+	"REVENUE_AMOUNT",
+    DEPARTMENT_CODE,
+    REDUCTION_EMAIL
+FROM "MARTS"."SALES_PERFORMANCE"."FACT_REVENUE";
+Concatenate
+[FACT_REVENUE]:
+LOAD Date(Floor(EVENT_BOOKING_DATE)) AS link_Date,
+	//Date(Floor(EVENT_BOOKING_DATE)) AS EVENT_BOOKING_DATE,
+	EVENT_END_DATE,
+	SALESPERSON_ACCOUNT_CODE, 
+	SPACE_CODE, 
+	SPACE_TYPE_CODE, 
+	EVENT_ID , 
+    EVENT_ID as REV_EVENT_ID,
+	EVENT_TYPE_CODE, 
+	LEAD_SOURCE_CODE, 
+    ApplyMap('Target',EVENT_ID,0) AS TARGET_REVENUE,
+	REVENUE_AMOUNT,
+    DEPARTMENT_CODE,
+    'Booked Revenue' AS Flag,
+    'Booking Date'			AS Type,
+    Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
+    Where Num(EVENT_BOOKING_DATE)>=$(vStartDate)<=$(vEndDate);
+
+SELECT "EVENT_BOOKING_DATE",
+	"EVENT_START_DATE",
+	"EVENT_END_DATE",
+	"SALESPERSON_ACCOUNT_CODE",
+	"SPACE_CODE",
+    "SPACE_TYPE_CODE",
+	"EVENT_ID",
+	"EVENT_TYPE_CODE",
+	"LEAD_SOURCE_CODE" ,
+	"REVENUE_AMOUNT",
+    DEPARTMENT_CODE,
+    REDUCTION_EMAIL
+FROM "MARTS"."SALES_PERFORMANCE"."FACT_REVENUE";
+
+Concatenate
+[FACT_VENUE_OCCUPANCY]:
+LOAD EVENT_ID , 
+	SPACE_CODE, 
+	Date(Floor(MONTH_START)) AS link_Date, 
+	OCCUPANCY_RATE,  
+    Date(Floor(MONTH_START))  as MONTH_START,
+    'Event Occupancy' As Flag,
+    'Event Date'			AS Type
+    //Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
+    Where Num(MONTH_START)>=$(vStartDate)<=$(vEndDate) ;
+
+SELECT "EVENT_ID",
+	"SPACE_CODE",
+	"TENANT_ID",
+	"MONTH_START",
+    "EVENT_BOOKING_DATE",
+	"TOTAL_OCCUPIED_HOURS",
+	"TOTAL_DAYS_IN_MONTH",
+	"OCCUPANCY_RATE"
+   // REDUCTION_EMAIL
+FROM "MARTS"."SALES_PERFORMANCE"."FACT_VENUE_OCCUPANCY";
+
+Concatenate
+[FACT_VENUE_OCCUPANCY]:
+LOAD EVENT_ID , 
+	SPACE_CODE, 
+	Date(Floor(MONTH_START)) AS link_Date, 
+	OCCUPANCY_RATE,
+    Date(Floor(MONTH_START)) as MONTH_START,
+    'Booking Occupancy' As Flag,
+    'Booking Date'			AS Type
+    //Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
+    Where Num(MONTH_START)>=$(vStartDate)<=$(vEndDate);
+
+SELECT "EVENT_ID",
+	"SPACE_CODE",
+	"MONTH_START",
+    "EVENT_BOOKING_DATE",
+	"TOTAL_OCCUPIED_HOURS",
+	"TOTAL_DAYS_IN_MONTH",
+	"OCCUPANCY_RATE" 
+   // REDUCTION_EMAIL,
+FROM "MARTS"."SALES_PERFORMANCE"."FACT_VENUE_OCCUPANCY" ;
+
+NoConcatenate 
+Final_Table:
+Load *, 
+ApplyMap('DIM_SPACE_TYPE',SpaceType) AS SPACE_TYPE_NAME;
+Load *, 
+ApplyMap('DIM_EVENT_TYPES',Trim(Upper(EVENT_TYPE_CODE))) AS EVENT_TYPE,
+ApplyMap('SQ_FT',SPACE_CODE) AS SQ_FT,
+ApplyMap('DIM_SALES_CHANNEL',Trim(Upper(LEAD_SOURCE_CODE))) AS SALES_CHANNEL,
+ApplyMap('Space_Name',SPACE_CODE) AS SPACE_NAME,
+ApplyMap('Space_Type',SPACE_CODE) AS SpaceType,
+ApplyMap('DIM_SALESPERSON',SALESPERSON_ACCOUNT_CODE,'') AS SALES_PERSON,
+ApplyMap('DIM_REVENUE_ELEMENT',DEPARTMENT_CODE) AS DEPARTMENT_NAME
+Resident FACT_RETENTION_RATE;
+Drop Table FACT_RETENTION_RATE;
+
+Tag Fields KPI,EVENT_ID,REV_EVENT_ID,CYRevenue,SQ_FT,SpaceType,TENANT_ID,BOOKING_MONTH,link_Date,
+CYRevenue,CYSales,CY_OCCUPANCY_RATE,PY_OCCUPANCY_RATE,
+PYRevenue,PYSales,SPACE_TYPE_CODE,SPACE_CODE,MONTH_START,LEAD_SOURCE_CODE,EVENT_TYPE_CODE,DEPARTMENT_CODE,REDUCTION_EMAIL with '$hidden';
+///$tab Master Calendar
+Fact_Calendar:
+Load Distinct link_Date 
+Resident Final_Table;
+
+MinMaxDates:
+Load 
+min(Date(link_Date))                                as Min_Date,
+max(Date(link_Date))                                as Max_Date
+Resident Fact_Calendar;
+
+Let vMinDate1 = num(Peek('Min_Date',0,'MinMaxDates'));
+Let vMaxDate1 = num(Peek('Max_Date',0,'MinMaxDates'));
+Drop Tables MinMaxDates,Fact_Calendar;
+
+TempCalendar:
+ 
+Load 
+$(vMinDate1) + IterNo() as Num,
+Date($(vMinDate1)+IterNo()-1) as TempDate
+AutoGenerate 1 while $(vMinDate1) + IterNo()-1 <= $(vMaxDate1);
+ 
+MasterCalendar:
+Load
+Date(TempDate) as link_Date,
+Year(TempDate) as YEAR,
+Month(TempDate) AS MONTH
+Resident TempCalendar; 
+Drop Table TempCalendar;
+
+
+///$tab Pace
+Qualify *;
+NoConcatenate
+[Pace]:
+
+LOAD Date(Floor(EVENT_START_DATE),'DD-MM-YYYY') AS EVENT_DATE,
+	Monthname(EVENT_BOOKING_DATE)&'-'&SPACE_CODE AS Booking_Month_Key,
+    MonthName(AddYears(EVENT_BOOKING_DATE, 1))&'-'&SPACE_CODE AS Previous_Month_Key,
+	MonthName(EVENT_START_DATE) as EventMonth,
+    Monthname(EVENT_BOOKING_DATE) AS BookingMonth,
+    MonthName(AddYears(EVENT_BOOKING_DATE, 1)) AS PYBookMonth,
+    MonthName(AddYears(EVENT_START_DATE, 1)) AS PYEventMonth,
+	Date(Floor(EVENT_BOOKING_DATE),'DD-MM-YYYY') AS Booking_Date,
+    'Sales' AS KPI,
+	SALESPERSON_ACCOUNT_CODE, 
+	SPACE_CODE, 
+	SPACE_TYPE_CODE, 
+	EVENT_ID, 
+	EVENT_TYPE_CODE, 
+	LEAD_SOURCE_CODE, 
+	TENANT_ID, 
+	REVENUE_AMOUNT;
+    //Where Num(EVENT_BOOKING_DATE)>=$(vStartDate);
+   // <=$(vEndDate) ;
+
+
+SELECT "EVENT_START_DATE",
+	"EVENT_BOOKING_DATE",
+	"SALESPERSON_ACCOUNT_CODE",
+	"SPACE_CODE",
+	"SPACE_TYPE_CODE",
+	"EVENT_ID",
+	"EVENT_TYPE_CODE",
+	"LEAD_SOURCE_CODE",
+	"TENANT_ID",
+	"REVENUE_AMOUNT"
+FROM "MARTS"."SALES_PERFORMANCE"."FACT_REVENUE";
+Unqualify *;
+
+[Current_Year_Sales]:
+LOAD
+     Pace.BookingMonth aS Booking_Month,Pace.EventMonth As Event_Month,
+     'Sales' AS KPI,
+    Sum(Pace.REVENUE_AMOUNT) AS CYRevenue,
+    Count(DISTINCT Pace.EVENT_ID) AS CYSales
+RESIDENT Pace
+GROUP BY Pace.BookingMonth,Pace.EventMonth;
+
+Left Keep(Current_Year_Sales)
+Previous_Year_Sales:
+LOAD
+  Pace.PYBookMonth aS Booking_Month,
+    Sum(Pace.REVENUE_AMOUNT) AS PYRevenue,
+    Count(DISTINCT Pace.EVENT_ID) AS PYSales
+RESIDENT Pace
+GROUP BY Pace.PYBookMonth;
+
+Drop Table Pace;
+ 
+Qualify *;
+[Occ]:
+LOAD 
+	MonthName(MONTH_START) as EventMonth,
+    Monthname(EVENT_BOOKING_DATE) AS BookingMonth,
+     MonthName(AddYears(EVENT_BOOKING_DATE, 1)) AS PYBookMonth,
+    MonthName(AddYears(MONTH_START, 1)) AS PYEventMonth,
+	OCCUPANCY_RATE,
+    'Occupancy' AS KPI;
+  //  Where Num(EVENT_BOOKING_DATE)>=$(vStartDate);
+    //<=$(vEndDate) and Num(MONTH_START)>=$(vStartDate)<=$(vEndDate);
+ SELECT "EVENT_ID",
+	"SPACE_CODE",
+	"TENANT_ID",
+	"MONTH_START",
+    "EVENT_BOOKING_DATE",
+	"TOTAL_OCCUPIED_HOURS",
+	"TOTAL_DAYS_IN_MONTH",
+	"OCCUPANCY_RATE"
+FROM "MARTS"."SALES_PERFORMANCE"."FACT_VENUE_OCCUPANCY";
+
+
+Unqualify *;
+    
+Concatenate(Current_Year_Sales)   
+Occupany:
+Load Occ.BookingMonth AS Booking_Month,
+	 Occ.EventMonth AS Event_Month,
+     'Occupancy' AS KPI,
+     Occ.OCCUPANCY_RATE AS CY_OCCUPANCY_RATE
+Resident Occ; //Group By [Occ.BookingMonth],[Occ.EventMonth];
+
+Left Keep(Current_Year_Sales)
+Previous_Year_OCC:
+Load Occ.PYBookMonth AS Booking_Month,
+	'Occupancy' aS KPI,
+     Occ.OCCUPANCY_RATE AS PY_OCCUPANCY_RATE
+Resident Occ;// Group By [Occ.PYBookMonth],[Occ.EventMonth];
+Drop Table Occ;
+
+NoConcatenate
+[DATA_FRESHNESS_LOG]:
+LOAD UPDATED_AT_UTC;
+
+SELECT "UPDATED_AT_UTC"
+FROM "MARTS"."SHARED"."DATA_FRESHNESS_LOG"
+WHERE SCHEMA_NAME='sales_performance';
+
+Tag Fields KPI,EVENT_ID,REV_EVENT_ID,CYRevenue,SQ_FT,SpaceType,TENANT_ID,BOOKING_MONTH,link_Date,
+CYRevenue,CYSales,CY_OCCUPANCY_RATE,PY_OCCUPANCY_RATE,
+PYRevenue,PYSales,SPACE_TYPE_CODE,SPACE_CODE,MONTH_START,LEAD_SOURCE_CODE,EVENT_TYPE_CODE,DEPARTMENT_CODE with '$hidden';
+
+Exit Script;
