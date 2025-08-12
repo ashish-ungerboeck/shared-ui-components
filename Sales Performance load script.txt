@@ -246,8 +246,8 @@ LOAD EVENT_ID ,
 	OCCUPANCY_RATE,  
     Date(Floor(MONTH_START))  as MONTH_START,
     'Event Occupancy' As Flag,
-    'Event Date'			AS Type
-    //Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
+    'Event Date'			AS Type,
+    Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
     Where Num(MONTH_START)>=$(vStartDate)<=$(vEndDate) ;
 
 SELECT "EVENT_ID",
@@ -258,7 +258,7 @@ SELECT "EVENT_ID",
 	"TOTAL_OCCUPIED_HOURS",
 	"TOTAL_DAYS_IN_MONTH",
 	"OCCUPANCY_RATE"
-   // REDUCTION_EMAIL
+    REDUCTION_EMAIL
 FROM "MARTS"."SALES_PERFORMANCE"."FACT_VENUE_OCCUPANCY";
 
 Concatenate
@@ -269,8 +269,8 @@ LOAD EVENT_ID ,
 	OCCUPANCY_RATE,
     Date(Floor(MONTH_START)) as MONTH_START,
     'Booking Occupancy' As Flag,
-    'Booking Date'			AS Type
-    //Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
+    'Booking Date'			AS Type,
+    Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
     Where Num(MONTH_START)>=$(vStartDate)<=$(vEndDate);
 
 SELECT "EVENT_ID",
@@ -279,8 +279,8 @@ SELECT "EVENT_ID",
     "EVENT_BOOKING_DATE",
 	"TOTAL_OCCUPIED_HOURS",
 	"TOTAL_DAYS_IN_MONTH",
-	"OCCUPANCY_RATE" 
-   // REDUCTION_EMAIL,
+	"OCCUPANCY_RATE" ,
+     REDUCTION_EMAIL,
 FROM "MARTS"."SALES_PERFORMANCE"."FACT_VENUE_OCCUPANCY" ;
 
 NoConcatenate 
