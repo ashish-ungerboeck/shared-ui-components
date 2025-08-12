@@ -30,17 +30,17 @@ Let vEndDate=Num(Date(YearEnd(AddYears(Today(),3))));
  
 // SECTION ACCESS;
 
-// LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
 
-// [QlikUserGroupInfo]:
-// LOAD Trim(Upper(ACCESS)) as ACCESS,  
-// 	Trim(UPPER([USER.EMAIL])) as [USER.EMAIL], 
-// 	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;
+[QlikUserGroupInfo]:
+LOAD Trim(Upper(ACCESS)) as ACCESS,  
+	Trim(UPPER([USER.EMAIL])) as [USER.EMAIL], 
+	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;
 
-// SELECT ACCESS,
-// 	"USER.EMAIL",
-// 	"REDUCTION_EMAIL"
-// FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+SELECT ACCESS,
+	"USER.EMAIL",
+	"REDUCTION_EMAIL"
+FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
 
 // SECTION APPLICATION;
 
@@ -142,7 +142,7 @@ LOAD BOOKED_VENUE as SPACE_CODE,
     'Retention' AS Flag,
     'Event Date' AS Type,
    Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
-    Where Date(Floor(BOOKING_MONTH))>=$(vStartDate)<=$(vEndDate);
+    Where Date(Floor(BOOKING_MONTH))>=$(vStartDate) And Date(Floor(BOOKING_MONTH))<=$(vEndDate);
 
 SELECT "CUSTOMER_NUMBER",
 	"BOOKED_VENUE",
@@ -161,7 +161,7 @@ LOAD BOOKED_VENUE as SPACE_CODE,
     'Retention' AS Flag,
     'Booking Date' AS Type,
    Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
-    Where Date(Floor(BOOKING_MONTH))>=$(vStartDate)<=$(vEndDate);
+    Where Date(Floor(BOOKING_MONTH))>=$(vStartDate) And Date(Floor(BOOKING_MONTH))<=$(vEndDate);
 
 SELECT "CUSTOMER_NUMBER",
 	"BOOKED_VENUE",
@@ -188,7 +188,7 @@ LOAD Date(Floor(EVENT_START_DATE)) AS link_Date,
     'Event Revenue' AS Flag,
     'Event Date'			AS Type,
     Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
-	Where Num(EVENT_START_DATE)>= $(vStartDate)<=$(vEndDate) ;
+	Where Num(EVENT_START_DATE)>= $(vStartDate) And Num(EVENT_START_DATE)<=$(vEndDate) ;
     
 SELECT "EVENT_BOOKING_DATE",
 	"EVENT_START_DATE",
@@ -222,7 +222,7 @@ LOAD Date(Floor(EVENT_BOOKING_DATE)) AS link_Date,
     'Booked Revenue' AS Flag,
     'Booking Date'			AS Type,
     Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
-    Where Num(EVENT_BOOKING_DATE)>=$(vStartDate)<=$(vEndDate);
+    Where Num(EVENT_BOOKING_DATE)>=$(vStartDate) And Num(EVENT_BOOKING_DATE)<=$(vEndDate);
 
 SELECT "EVENT_BOOKING_DATE",
 	"EVENT_START_DATE",
@@ -248,7 +248,7 @@ LOAD EVENT_ID ,
     'Event Occupancy' As Flag,
     'Event Date'			AS Type,
     Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
-    Where Num(MONTH_START)>=$(vStartDate)<=$(vEndDate) ;
+    Where Num(MONTH_START)>=$(vStartDate) and Num(MONTH_START)<=$(vEndDate) ;
 
 SELECT "EVENT_ID",
 	"SPACE_CODE",
@@ -257,7 +257,7 @@ SELECT "EVENT_ID",
     "EVENT_BOOKING_DATE",
 	"TOTAL_OCCUPIED_HOURS",
 	"TOTAL_DAYS_IN_MONTH",
-	"OCCUPANCY_RATE"
+	"OCCUPANCY_RATE",
     REDUCTION_EMAIL
 FROM "MARTS"."SALES_PERFORMANCE"."FACT_VENUE_OCCUPANCY";
 
@@ -271,7 +271,7 @@ LOAD EVENT_ID ,
     'Booking Occupancy' As Flag,
     'Booking Date'			AS Type,
     Trim(Upper(REDUCTION_EMAIL)) as REDUCTION_EMAIL 
-    Where Num(MONTH_START)>=$(vStartDate)<=$(vEndDate);
+    Where Num(MONTH_START)>=$(vStartDate) and Num(MONTH_START)<=$(vEndDate);
 
 SELECT "EVENT_ID",
 	"SPACE_CODE",
@@ -345,6 +345,7 @@ LOAD Date(Floor(EVENT_START_DATE),'DD-MM-YYYY') AS EVENT_DATE,
     MonthName(AddYears(EVENT_BOOKING_DATE, 1)) AS PYBookMonth,
     MonthName(AddYears(EVENT_START_DATE, 1)) AS PYEventMonth,
 	Date(Floor(EVENT_BOOKING_DATE),'DD-MM-YYYY') AS Booking_Date,
+    
     'Sales' AS KPI,
 	SALESPERSON_ACCOUNT_CODE, 
 	SPACE_CODE, 
