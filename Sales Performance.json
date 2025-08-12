@@ -1,15 +1,15 @@
 
 SHEETS
-{"qInfo":{"qId":"56a98419-bafe-4ad6-8833-7aba9683792a","qType":"sheet"},"qMeta":{"title":"Sales Performance","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"56a98419-bafe-4ad6-8833-7aba9683792a","approved":true,"published":true,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-08-05T07:21:07.204Z","modifiedDate":"2025-08-12T05:52:20.633Z","publishTime":"2025-08-12T05:35:26.116Z","privileges":["read"]},"qData":[]}
-{"qInfo":{"qId":"0388d528-76a7-4324-8648-0b12fec3400e","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"0388d528-76a7-4324-8648-0b12fec3400e","approved":true,"published":true,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-08-04T15:19:11.127Z","modifiedDate":"2025-08-05T07:56:49.602Z","encrypted":true,"publishTime":"2025-08-05T07:56:49.602Z","title":"Pace Matrix","description":"","privileges":["read"]},"qData":[]}
+{"qInfo":{"qId":"56a98419-bafe-4ad6-8833-7aba9683792a","qType":"sheet"},"qMeta":{"title":"Sales Performance","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"56a98419-bafe-4ad6-8833-7aba9683792a","approved":true,"published":true,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-08-05T07:21:07.204Z","modifiedDate":"2025-08-12T05:35:26.116Z","publishTime":"2025-08-12T13:02:43.738Z","privileges":["read"]},"qData":[]}
+{"qInfo":{"qId":"0388d528-76a7-4324-8648-0b12fec3400e","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"0388d528-76a7-4324-8648-0b12fec3400e","approved":true,"published":true,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-08-04T15:19:11.127Z","modifiedDate":"2025-08-05T07:56:49.602Z","encrypted":true,"publishTime":"2025-08-12T12:56:21.448Z","title":"Pace Matrix","description":"","privileges":["read"]},"qData":[]}
 
 OBJECTS ON SHEETS
-{"bounds":{"x":0,"y":0,"width":91.66666666666666,"height":2.6530612244897958},"col":0,"colspan":77,"name":"321d6ecf-8961-427f-80c2-bd7fc67c751f","row":0,"rowspan":2,"type":"filterpane"}
-{"bounds":{"x":50,"y":2.653061224489796,"width":25,"height":5.306122448979592},"col":42,"colspan":21,"name":"c41ca83a-cc15-4258-8db1-8e6a8cfb45e8","row":3,"rowspan":4,"type":"kpi"}
-{"bounds":{"x":75,"y":2.653061224489796,"width":25,"height":5.306122448979592},"col":63,"colspan":21,"name":"8c52fc34-bcb3-4a87-aa31-2b7788b6c42e","row":3,"rowspan":4,"type":"kpi"}
-{"bounds":{"x":0,"y":2.653061224489796,"width":25,"height":5.306122448979592},"col":0,"colspan":21,"name":"afc4af67-b447-43b5-a933-2037135369f4","row":3,"rowspan":4,"type":"kpi"}
+{"bounds":{"y":0,"x":0,"width":90.47619047619048,"height":3.061224489795918},"col":0,"colspan":76,"name":"321d6ecf-8961-427f-80c2-bd7fc67c751f","row":0,"rowspan":3,"type":"filterpane"}
+{"bounds":{"y":3.061224489795918,"x":50,"width":25,"height":5.1020408163265305},"col":42,"colspan":21,"name":"c41ca83a-cc15-4258-8db1-8e6a8cfb45e8","row":3,"rowspan":5,"type":"kpi"}
+{"bounds":{"y":3.061224489795918,"x":75,"width":25,"height":5.1020408163265305},"col":63,"colspan":21,"name":"8c52fc34-bcb3-4a87-aa31-2b7788b6c42e","row":3,"rowspan":5,"type":"kpi"}
+{"bounds":{"y":3.061224489795918,"x":0,"width":25,"height":5.1020408163265305},"col":0,"colspan":21,"name":"afc4af67-b447-43b5-a933-2037135369f4","row":3,"rowspan":5,"type":"kpi"}
 {"bounds":{"x":50,"y":35.714285714285715,"width":50,"height":21.428571428571434},"col":42,"colspan":42,"name":"b34d2f24-dbe1-402f-a0ee-08165547f750","row":35,"rowspan":21,"type":"barchart"}
-{"bounds":{"x":50,"y":14.285714285714288,"width":50,"height":21.428571428571434},"col":42,"colspan":42,"name":"db6398d2-531a-4c59-a753-c91b881c5991","row":14,"rowspan":21,"type":"sn-tabbed-container"}
+{"bounds":{"x":50,"y":15.306122448979592,"width":50,"height":20.408163265306122},"col":42,"colspan":42,"name":"db6398d2-531a-4c59-a753-c91b881c5991","row":15,"rowspan":20,"type":"sn-tabbed-container"}
 {"bounds":{"x":0,"y":8.163265306122451,"width":13.095238095238097,"height":3.061224489795918},"col":0,"colspan":11,"name":"79bdca98-e599-45db-9f8e-97c096f45120","row":8,"rowspan":3,"type":"kpi"}
 {"bounds":{"x":13.095238095238097,"y":8.163265306122451,"width":11.904761904761903,"height":3.061224489795918},"col":11,"colspan":10,"name":"c346cff5-9596-486b-bfed-467516742795","row":8,"rowspan":3,"type":"kpi"}
 {"bounds":{"x":25,"y":8.163265306122451,"width":13.095238095238097,"height":3.061224489795918},"col":21,"colspan":11,"name":"46aa0c86-4e75-40cf-8564-56c4d7adb333","row":8,"rowspan":3,"type":"kpi"}
@@ -17,16 +17,16 @@ OBJECTS ON SHEETS
 {"bounds":{"x":50,"y":8.163265306122451,"width":25,"height":3.061224489795918},"col":42,"colspan":21,"name":"59c1084c-e06f-4b1c-8851-3446ddd75ac3","row":8,"rowspan":3,"type":"kpi"}
 {"bounds":{"x":75,"y":8.163265306122451,"width":25,"height":3.061224489795918},"col":63,"colspan":21,"name":"74cb31c7-2626-4175-9b7b-d7fb603fd77e","row":8,"rowspan":3,"type":"kpi"}
 {"bounds":{"x":0,"y":57.14285714285715,"width":50,"height":21.428571428571434},"col":0,"colspan":42,"name":"1337c07d-cb48-4424-8376-2849820d29a7","row":56,"rowspan":21,"type":"sn-tabbed-container"}
-{"bounds":{"x":0,"y":11.22448979591837,"width":100,"height":3.061224489795918},"col":0,"colspan":84,"name":"30c8a604-9bf9-418c-a7f8-855e092521d2","row":11,"rowspan":3,"type":"qlik-variable-input"}
-{"bounds":{"x":0,"y":14.285714285714288,"width":50,"height":21.428571428571434},"col":0,"colspan":42,"name":"a34f2609-a41c-4610-8cd8-650896138557","row":14,"rowspan":21,"type":"linechart"}
+{"bounds":{"y":12.244897959183673,"x":0,"width":100,"height":3.061224489795918},"col":0,"colspan":84,"name":"30c8a604-9bf9-418c-a7f8-855e092521d2","row":12,"rowspan":3,"type":"qlik-variable-input"}
+{"bounds":{"x":0,"y":15.306122448979592,"width":50,"height":20.408163265306122},"col":0,"colspan":42,"name":"a34f2609-a41c-4610-8cd8-650896138557","row":15,"rowspan":20,"type":"linechart"}
 {"bounds":{"x":50,"y":57.14285714285715,"width":50,"height":21.428571428571434},"col":42,"colspan":42,"name":"416bf025-6eef-4285-8ed6-5745892dcc2f","row":56,"rowspan":21,"type":"barchart"}
-{"bounds":{"x":25,"y":2.653061224489796,"width":25,"height":5.306122448979592},"col":21,"colspan":21,"name":"11600349-ae79-4857-b467-1ddba227fafc","row":3,"rowspan":4,"type":"kpi"}
-{"bounds":{"y":0,"x":91.66666666666666,"width":8.333333333333332,"height":2.0408163265306123},"col":77,"colspan":7,"name":"a7628c41-2ca7-4621-885c-365a1d3086e4","row":0,"rowspan":2,"type":"kpi"}
+{"bounds":{"y":3.061224489795918,"x":25,"width":25,"height":5.1020408163265305},"col":21,"colspan":21,"name":"11600349-ae79-4857-b467-1ddba227fafc","row":3,"rowspan":5,"type":"kpi"}
 {"name":"320b80d2-1442-4faf-8f4a-a0e2d34500a5","type":"sn-tabbed-container","col":0,"row":35,"colspan":42,"rowspan":21,"bounds":{"x":0,"y":35.714285714285715,"width":50,"height":21.428571428571434}}
-{"name":"1af82233-ede0-4cd7-9ece-ae73feed3140","type":"sn-nlg-chart","col":0,"row":77,"colspan":84,"rowspan":21,"bounds":{"x":0,"y":78.57142857142857,"width":100,"height":21.42857142857143}}
-{"name":"131ecdc7-9e67-4dc0-99a0-fefef122627f","type":"sn-tabbed-container","col":0,"row":2,"colspan":24,"rowspan":39,"bounds":{"y":4.761904761904762,"x":0,"width":28.57142857142857,"height":92.85714285714286}}
-{"name":"fae75c6b-24f0-4add-a558-65062cd75858","type":"sn-tabbed-container","col":24,"row":0,"colspan":60,"rowspan":41,"bounds":{"y":0,"x":28.57142857142857,"width":71.42857142857143,"height":97.61904761904762}}
-{"name":"6850d7f9-9ddb-4fb5-89c8-e538ac699463","type":"qlik-variable-input","col":0,"row":0,"colspan":24,"rowspan":2,"bounds":{"y":0,"x":0,"width":28.57142857142857,"height":4.761904761904762}}
+{"name":"1af82233-ede0-4cd7-9ece-ae73feed3140","type":"sn-nlg-chart","col":0,"row":78,"colspan":84,"rowspan":20,"bounds":{"y":79.59183673469387,"x":0,"width":100,"height":20.408163265306122}}
+{"name":"GvhtHvv","type":"kpi","col":76,"row":0,"colspan":8,"rowspan":3,"bounds":{"y":0,"x":90.47619047619048,"width":9.523809523809524,"height":3.061224489795918}}
+{"name":"131ecdc7-9e67-4dc0-99a0-fefef122627f","type":"sn-tabbed-container","col":0,"row":3,"colspan":24,"rowspan":38,"bounds":{"y":7.142857142857142,"x":0,"width":28.57142857142857,"height":90.47619047619048}}
+{"name":"fae75c6b-24f0-4add-a558-65062cd75858","type":"sn-tabbed-container","col":24,"row":3,"colspan":60,"rowspan":38,"bounds":{"y":7.142857142857142,"x":28.57142857142857,"width":71.42857142857143,"height":90.47619047619048}}
+{"name":"6850d7f9-9ddb-4fb5-89c8-e538ac699463","type":"qlik-variable-input","col":0,"row":0,"colspan":84,"rowspan":3,"bounds":{"y":0,"x":0,"width":100,"height":7.142857142857142}}
 
 DIMENSIONS
 {"qInfo":{"qId":"aABWEX","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"aABWEX","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-08-12T03:37:15.538Z","modifiedDate":"2025-08-12T03:37:15.538Z","encrypted":true,"privileges":["read"],"title":"Date Type","description":"","tags":[]},"qData":[]}
@@ -44,13 +44,16 @@ DIMENSIONS
 {"qInfo":{"qId":"5be3f8d3-28ca-468d-a52f-790352a4b268","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"5be3f8d3-28ca-468d-a52f-790352a4b268","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-20T07:08:45.995Z","modifiedDate":"2025-08-04T15:19:11.122Z","encrypted":true,"privileges":["read"],"title":"Customer Retained From","description":"","tags":[]},"qData":[]}
 
 MEASURES
-{"qInfo":{"qId":"EbUNLSL","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"EbUNLSL","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T15:25:48.451Z","modifiedDate":"2025-08-12T05:28:29.108Z","encrypted":true,"privileges":["read"],"title":"MoM % Sales","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"pPgfuJC","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"pPgfuJC","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-07T10:06:09.224Z","modifiedDate":"2025-08-04T15:19:11.108Z","encrypted":true,"privileges":["read"],"title":"Occupancy Rate","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"JGjJU","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"JGjJU","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T15:25:38.084Z","modifiedDate":"2025-08-04T15:19:11.108Z","encrypted":true,"privileges":["read"],"title":"YoY % Revenue","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"hehjAvt","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"hehjAvt","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T14:42:24.106Z","modifiedDate":"2025-08-04T15:19:11.109Z","encrypted":true,"privileges":["read"],"title":"YoY Retention Rate","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"yfSgP","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"yfSgP","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T14:44:59.574Z","modifiedDate":"2025-08-04T15:19:11.109Z","encrypted":true,"privileges":["read"],"title":"YoY Occupancy Rate","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"YvGjcnm","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"YvGjcnm","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T15:25:22.886Z","modifiedDate":"2025-08-04T15:19:11.110Z","encrypted":true,"privileges":["read"],"title":"MoM % Revenue","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"vNpyr","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"vNpyr","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T15:25:43.266Z","modifiedDate":"2025-08-04T15:19:11.110Z","encrypted":true,"privileges":["read"],"title":"YoY % Sales","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"hehjAvt","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"hehjAvt","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T14:42:24.106Z","modifiedDate":"2025-08-12T10:03:13.599Z","encrypted":true,"privileges":["read"],"title":"YoY Retention Rate","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"yfSgP","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"yfSgP","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T14:44:59.574Z","modifiedDate":"2025-08-12T10:03:03.358Z","encrypted":true,"privileges":["read"],"title":"YoY Occupancy Rate","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"PLdLRcE","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"PLdLRcE","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-08-12T07:44:46.457Z","modifiedDate":"2025-08-12T10:02:48.149Z","encrypted":true,"privileges":["read"],"title":"Retention Rate","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"pPgfuJC","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"pPgfuJC","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-07T10:06:09.224Z","modifiedDate":"2025-08-12T10:02:27.930Z","encrypted":true,"privileges":["read"],"title":"Occupancy Rate","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"JGjJU","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"JGjJU","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T15:25:38.084Z","modifiedDate":"2025-08-12T10:01:36.982Z","encrypted":true,"privileges":["read"],"title":"YoY % Revenue","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"YvGjcnm","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"YvGjcnm","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T15:25:22.886Z","modifiedDate":"2025-08-12T10:01:26.786Z","encrypted":true,"privileges":["read"],"title":"MoM % Revenue","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"vNpyr","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"vNpyr","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T15:25:43.266Z","modifiedDate":"2025-08-12T10:01:16.598Z","encrypted":true,"privileges":["read"],"title":"YoY % Sales","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"EbUNLSL","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"EbUNLSL","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T15:25:48.451Z","modifiedDate":"2025-08-12T10:01:06.423Z","encrypted":true,"privileges":["read"],"title":"MoM % Sales","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"dJJFfXw","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"dJJFfXw","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-07T09:55:21.790Z","modifiedDate":"2025-08-12T10:00:51.074Z","encrypted":true,"privileges":["read"],"title":"Number of Sales","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"JQYmPPX","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"JQYmPPX","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-08-12T07:44:46.458Z","modifiedDate":"2025-08-12T10:00:35.880Z","encrypted":true,"privileges":["read"],"title":"Revenue.","description":"","tags":[]},"qData":[]}
 {"qInfo":{"qId":"DfmDKMP","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"DfmDKMP","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-09T08:31:38.252Z","modifiedDate":"2025-08-04T15:19:11.111Z","encrypted":true,"privileges":["read"],"title":"Retention Rate","description":"","tags":[]},"qData":[]}
 {"qInfo":{"qId":"28e987e8-9cf3-4b49-80f8-f513b7cb52e9","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"28e987e8-9cf3-4b49-80f8-f513b7cb52e9","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-23T07:45:15.023Z","modifiedDate":"2025-08-04T15:19:11.111Z","encrypted":true,"privileges":["read"],"title":"Average Revenue","description":"","tags":["average","avg","Revenue"]},"qData":[]}
 {"qInfo":{"qId":"e32a7f43-42a0-427f-aa3f-ae1013777603","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"e32a7f43-42a0-427f-aa3f-ae1013777603","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-08T08:07:35.790Z","modifiedDate":"2025-08-04T15:19:11.112Z","encrypted":true,"privileges":["read"],"title":"Revenue","description":"","tags":[]},"qData":[]}
@@ -60,13 +63,12 @@ MEASURES
 {"qInfo":{"qId":"Lfmrrmx","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"Lfmrrmx","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-06-18T12:08:04.016Z","modifiedDate":"2025-08-04T15:19:11.119Z","encrypted":true,"privileges":["read"],"title":"Cumulative Revenue","description":"","tags":[]},"qData":[]}
 {"qInfo":{"qId":"SyDHbtF","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"SyDHbtF","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-22T10:59:35.305Z","modifiedDate":"2025-08-04T15:19:11.120Z","encrypted":true,"privileges":["read"],"title":"TargetRevenue","description":"","tags":[]},"qData":[]}
 {"qInfo":{"qId":"SxZK","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"SxZK","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-07T10:05:08.211Z","modifiedDate":"2025-08-04T15:19:11.120Z","encrypted":true,"privileges":["read"],"title":"Booked SqFt","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"dJJFfXw","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"dJJFfXw","approved":true,"published":false,"owner":"auth0|d8e3c75e80fd194dd03dc81728dc50b232612190ab30877e5f7c6480d04424b3","ownerId":"67e0fed9fe1b077c14d94b9c","createdDate":"2025-05-07T09:55:21.790Z","modifiedDate":"2025-08-04T15:19:11.121Z","encrypted":true,"privileges":["read"],"title":"Number of Sales","description":"","tags":[]},"qData":[]}
 
 VARIABLES
 {"qName":"vStartDate","qDefinition":"44562","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"557c947c-e273-46d1-b4a8-139ef93f0af0","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"vEndDate","qDefinition":"47118.999999988","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"9c84f2bd-13e9-4c9c-9b1b-babb0d0f1c13","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"vMinDate1","qDefinition":"44562","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"d215f0dd-af14-4bf3-949d-909845b487b8","qType":"variable"},"qData":[],"qIsScriptCreated":true}
-{"qName":"vMaxDate1","qDefinition":"131093","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"7c7ae02b-1aeb-4501-b922-e5a85e7f9754","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"vMaxDate1","qDefinition":"47116","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"7c7ae02b-1aeb-4501-b922-e5a85e7f9754","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"vCMStartDate","qDefinition":"=Date(Monthstart(Max(link_Date)))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"59f1ee93-4d8e-486f-99c9-41635e34c313","qType":"variable"},"qData":[]}
 {"qName":"vPYStartDate","qDefinition":"=Date(AddYEars(Yearstart(Max(link_Date)),-1))\/\/Date(Monthstart(Addyears(Max(link_Date),-1)),'DD-MM-YYYY')","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"99cae26b-881a-48e7-9a0d-28a5d3e41335","qType":"variable"},"qData":[]}
 {"qName":"vPYMaxDate","qDefinition":"=Date(addyears(Max(link_Date),-1))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"07b14a34-8543-4c58-9e14-288d059c9d70","qType":"variable"},"qData":[]}
@@ -102,40 +104,42 @@ VARIABLES
 {"qName":"vPYEndDate","qDefinition":"=Date(AddYEars(Yearend(Max(link_Date)),-1))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"63e7b6c6-8a2b-4d82-8474-f3c0d770b971","qType":"variable"},"qData":[]}
 
 FIELDS
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":39,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":6,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":6,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":41,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":7,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":7,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":4,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":27,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"SPACE_CODE","qCardinal":1061,"qTags":["$hidden","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"link_Date","qCardinal":86532,"qTags":["$key","$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qName":"ACCESS","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["QlikUserGroupInfo"]}
+{"qName":"USER.EMAIL","qCardinal":32,"qTags":["$ascii","$text"],"qSrcTables":["QlikUserGroupInfo"]}
+{"qIsHidden":true,"qName":"REDUCTION_EMAIL","qCardinal":2153,"qTags":["$key","$hidden"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"SPACE_CODE","qCardinal":1054,"qTags":["$hidden","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"link_Date","qCardinal":2555,"qTags":["$key","$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"BOOKING_MONTH","qCardinal":44,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
 {"qName":"YEARS_SINCE_FIRST_BOOKING","qCardinal":28,"qTags":["$numeric","$integer"],"qSrcTables":["Final_Table"]}
 {"qName":"Flag","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
 {"qName":"Type","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
-{"qIsHidden":true,"qName":"REDUCTION_EMAIL","qCardinal":2141,"qTags":["$hidden"],"qSrcTables":[]}
-{"qName":"SALESPERSON_ACCOUNT_CODE","qCardinal":355,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
+{"qName":"SALESPERSON_ACCOUNT_CODE","qCardinal":350,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
 {"qIsHidden":true,"qName":"SPACE_TYPE_CODE","qCardinal":52,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"EVENT_ID","qCardinal":21325,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"REV_EVENT_ID","qCardinal":18700,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"EVENT_TYPE_CODE","qCardinal":126,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"EVENT_ID","qCardinal":21162,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"REV_EVENT_ID","qCardinal":18581,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"EVENT_TYPE_CODE","qCardinal":128,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"LEAD_SOURCE_CODE","qCardinal":11,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"REVENUE_AMOUNT","qCardinal":7751,"qTags":["$numeric"],"qSrcTables":["Final_Table"]}
+{"qName":"REVENUE_AMOUNT","qCardinal":7658,"qTags":["$numeric"],"qSrcTables":["Final_Table"]}
 {"qIsHidden":true,"qName":"DEPARTMENT_CODE","qCardinal":110,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qName":"TARGET_REVENUE","qCardinal":8,"qTags":["$numeric","$integer"],"qSrcTables":["Final_Table"]}
-{"qName":"EVENT_END_DATE","qCardinal":2525,"qTags":["$numeric","$integer"],"qSrcTables":["Final_Table"]}
-{"qName":"OCCUPANCY_RATE","qCardinal":564,"qTags":["$numeric"],"qSrcTables":["Final_Table"]}
-{"qIsHidden":true,"qName":"MONTH_START","qCardinal":217,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qName":"EVENT_TYPE","qCardinal":113,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
-{"qIsHidden":true,"qName":"SQ_FT","qCardinal":102,"qTags":["$hidden"],"qSrcTables":[]}
+{"qName":"EVENT_END_DATE","qCardinal":2529,"qTags":["$numeric","$integer"],"qSrcTables":["Final_Table"]}
+{"qName":"OCCUPANCY_RATE","qCardinal":560,"qTags":["$numeric"],"qSrcTables":["Final_Table"]}
+{"qIsHidden":true,"qName":"MONTH_START","qCardinal":84,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
+{"qName":"EVENT_TYPE","qCardinal":116,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
+{"qIsHidden":true,"qName":"SQ_FT","qCardinal":93,"qTags":["$hidden"],"qSrcTables":[]}
 {"qName":"SALES_CHANNEL","qCardinal":10,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
-{"qName":"SPACE_NAME","qCardinal":1025,"qTags":["$text"],"qSrcTables":["Final_Table"]}
-{"qIsHidden":true,"qName":"SpaceType","qCardinal":80,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"SALES_PERSON","qCardinal":40,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
-{"qName":"DEPARTMENT_NAME","qCardinal":103,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
-{"qName":"SPACE_TYPE_NAME","qCardinal":77,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
-{"qName":"YEAR","qCardinal":237,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar"]}
+{"qName":"SPACE_NAME","qCardinal":1015,"qTags":["$text"],"qSrcTables":["Final_Table"]}
+{"qIsHidden":true,"qName":"SpaceType","qCardinal":78,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"SALES_PERSON","qCardinal":39,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
+{"qName":"DEPARTMENT_NAME","qCardinal":101,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
+{"qName":"SPACE_TYPE_NAME","qCardinal":75,"qTags":["$ascii","$text"],"qSrcTables":["Final_Table"]}
+{"qName":"YEAR","qCardinal":7,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar"]}
 {"qName":"MONTH","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar"]}
 {"qName":"Booking_Month","qCardinal":394,"qTags":["$key","$numeric","$integer"],"qSrcTables":["Current_Year_Sales","Previous_Year_Sales","Previous_Year_OCC"]}
 {"qName":"Event_Month","qCardinal":1711,"qTags":["$numeric","$integer"],"qSrcTables":["Current_Year_Sales"]}
@@ -144,6 +148,6 @@ FIELDS
 {"qIsHidden":true,"qName":"CYSales","qCardinal":183,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"PYRevenue","qCardinal":361,"qTags":["$hidden","$numeric"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"PYSales","qCardinal":236,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"CY_OCCUPANCY_RATE","qCardinal":1039,"qTags":["$hidden","$numeric"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"PY_OCCUPANCY_RATE","qCardinal":1016,"qTags":["$hidden","$numeric"],"qSrcTables":[]}
-{"qName":"UPDATED_AT_UTC","qCardinal":788,"qTags":["$numeric","$timestamp"],"qSrcTables":["DATA_FRESHNESS_LOG"]}
+{"qIsHidden":true,"qName":"CY_OCCUPANCY_RATE","qCardinal":1040,"qTags":["$hidden","$numeric"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"PY_OCCUPANCY_RATE","qCardinal":1017,"qTags":["$hidden","$numeric"],"qSrcTables":[]}
+{"qName":"UPDATED_AT_UTC","qCardinal":835,"qTags":["$numeric","$timestamp"],"qSrcTables":["DATA_FRESHNESS_LOG"]}
