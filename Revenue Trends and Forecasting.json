@@ -1,6 +1,6 @@
 
 SHEETS
-{"qInfo":{"qId":"3ed2ea23-3287-4916-9129-4e50d702869a","qType":"sheet"},"qMeta":{"title":"REVENUE TRENDS AND FORECASTING","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"3ed2ea23-3287-4916-9129-4e50d702869a","approved":true,"published":true,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-12T11:50:24.124Z","modifiedDate":"2025-08-01T17:48:51.400Z","publishTime":"2025-08-12T08:05:01.988Z","privileges":["read"]},"qData":[]}
+{"qInfo":{"qId":"3ed2ea23-3287-4916-9129-4e50d702869a","qType":"sheet"},"qMeta":{"title":"REVENUE TRENDS AND FORECASTING","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"3ed2ea23-3287-4916-9129-4e50d702869a","approved":true,"published":true,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-12T11:50:24.124Z","modifiedDate":"2025-08-12T08:05:01.988Z","publishTime":"2025-08-13T06:00:28.206Z","privileges":["read"]},"qData":[]}
 
 OBJECTS ON SHEETS
 {"name":"e6e015fb-3f2b-4534-934e-05201cf3cad7","type":"sn-layout-container","col":0,"row":18,"colspan":42,"rowspan":20,"bounds":{"x":0,"y":13.953488372093025,"width":50,"height":15.503875968992253}}
