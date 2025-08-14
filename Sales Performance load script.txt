@@ -28,21 +28,22 @@ Let vEndDate=Num(Date(YearEnd(AddYears(Today(),3))));
 
 ///$tab Section Access
  
-// SECTION ACCESS;
+//SECTION ACCESS;
 
-LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+// LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
 
-[QlikUserGroupInfo]:
-LOAD Trim(Upper(ACCESS)) as ACCESS,  
-	Trim(UPPER([USER.EMAIL])) as [USER.EMAIL], 
-	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;
+// [QlikUserGroupInfo]:
+// LOAD Trim(Upper(ACCESS)) as ACCESS,  
+// 	Trim(UPPER([USER.EMAIL])) as USERID, 
+// 	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;  
+    
 
-SELECT ACCESS,
-	"USER.EMAIL",
-	"REDUCTION_EMAIL"
-FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+// SELECT ACCESS,
+// 	"USER.EMAIL",
+// 	"REDUCTION_EMAIL"
+// FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
 
-// SECTION APPLICATION;
+//SECTION APPLICATION;
 
 
 
