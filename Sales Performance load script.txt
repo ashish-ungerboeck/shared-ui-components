@@ -27,27 +27,49 @@ Let vEndDate=Num(Date(YearEnd(AddYears(Today(),3))));
 
 
 ///$tab Section Access
+// ====================================================================
+// SAFER Partial Reload for Section Access
+// Place this entire block at the VERY TOP of your load script.
+// ====================================================================
  
-//SECTION ACCESS;
-
-// LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
-
-// [QlikUserGroupInfo]:
-// LOAD Trim(Upper(ACCESS)) as ACCESS,  
-// 	Trim(UPPER([USER.EMAIL])) as USERID, 
-// 	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;  
-    
-
-// SELECT ACCESS,
-// 	"USER.EMAIL",
-// 	"REDUCTION_EMAIL"
-// FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
-
-//SECTION APPLICATION;
-
-
-
-
+IF IsPartialReload() THEN
+ 
+  SECTION ACCESS;
+ 
+  // Use 'REPLACE' to completely swap the security table.
+  // This ensures deleted users or changed permissions are handled correctly.
+  REPLACE LOAD Trim(Upper(ACCESS)) as ACCESS,
+      Trim(UPPER([USER.EMAIL])) as USER.EMAIL,
+      Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL;
+  LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+  SELECT ACCESS,
+      "USER.EMAIL",
+      "REDUCTION_EMAIL"
+  FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+  // This EXIT SCRIPT is vital. It stops the script from running further.
+  EXIT SCRIPT;
+ 
+ENDIF
+ 
+ 
+// ====================================================================
+// Your original, full reload script continues below, unchanged.
+// ====================================================================
+ 
+SECTION ACCESS;
+ 
+LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+ 
+[QlikUserGroupInfo]:
+LOAD Trim(Upper(ACCESS)) as ACCESS,  
+	Trim(UPPER([USER.EMAIL])) as USER.EMAIL, 
+	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;  
+SELECT ACCESS,
+	"USER.EMAIL",
+	"REDUCTION_EMAIL"
+FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+ 
+SECTION APPLICATION;
 ///$tab Mapping
 LIB CONNECT TO 'Dev_Space:Snowflake_Sales_Perfomance';
 //LIB CONNECT TO 'Dev_Test_Space:Snowflake_gomomentus-us_prod.snowflakecomputing.com';
