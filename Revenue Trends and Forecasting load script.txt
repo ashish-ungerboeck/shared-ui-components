@@ -22,6 +22,54 @@ SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;
 Let vStartDate=Num(Date(yearstart(AddYears(Today(),-58))));
 
 Let vEndDate=Num(Date(yearend(AddYears(Today(), +1))));
+///$tab Section Access
+
+
+// ====================================================================
+// SAFER Partial Reload for Section Access
+// Place this entire block at the VERY TOP of your load script.
+// ====================================================================
+ 
+IF IsPartialReload() THEN
+ 
+  SECTION ACCESS;
+ 
+  // Use 'REPLACE' to completely swap the security table.
+  // This ensures deleted users or changed permissions are handled correctly.
+  REPLACE LOAD Trim(Upper(ACCESS)) as ACCESS,
+      Trim(UPPER([USER.EMAIL])) as USER.EMAIL,
+      Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL;
+  LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+  SELECT ACCESS,
+      "USER.EMAIL",
+      "REDUCTION_EMAIL"
+  FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+  // This EXIT SCRIPT is vital. It stops the script from running further.
+  EXIT SCRIPT;
+ 
+ENDIF
+ 
+ 
+// ====================================================================
+// Your original, full reload script continues below, unchanged.
+// ====================================================================
+ 
+SECTION ACCESS;
+ 
+LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+ 
+[QlikUserGroupInfo]:
+LOAD Trim(Upper(ACCESS)) as ACCESS,  
+	Trim(UPPER([USER.EMAIL])) as USER.EMAIL, 
+	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;  
+SELECT ACCESS,
+	"USER.EMAIL",
+	"REDUCTION_EMAIL"
+FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+ 
+SECTION APPLICATION;
+
+
 ///$tab Auto-generated section
 Set dataManagerTables = '','REVENUE_TRENDS_DETAILS','DIM_MARKET_SEGMENTS';
 //This block renames script tables from non generated section which conflict with the names of managed tables
@@ -53,7 +101,7 @@ LOAD
 	DEPARTMENT_CODE,
 	PHASE, 
 	TENANT_ID, 	
-    REDUCTION_EMAIL,
+    Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL,
 	EVENT_NAME, 
 	EVENT_START_DATE, 
 	EVENT_END_DATE, 
@@ -80,7 +128,7 @@ SELECT "DEPARTMENT_CODE",
 	"REVENUE_AMOUNT"
 FROM "MARTS"."REVENUE_TRENDS"."REVENUE_TRENDS_DETAILS";
 
-Tag Fields DEPARTMENT_CODE, SPACE_CODE, SPACE_TYPE_CODE, EVENT_TYPE_CODE with '$hidden';
+Tag Fields DEPARTMENT_CODE, SPACE_CODE, SPACE_TYPE_CODE, EVENT_TYPE_CODE, REDUCTION_EMAIL with '$hidden';
 
 [DATA_FRESHNESS_LOG]:
 LOAD 
