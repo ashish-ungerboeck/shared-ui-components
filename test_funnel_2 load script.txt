@@ -1,0 +1,65 @@
+///$tab Main
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='$ ###0.00;-$ ###0.00';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='M/D/YYYY';
+SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET FirstWeekDay=6;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-US';
+SET CreateSearchIndexOnReload=1;
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
+
+///$tab Section
+LIB CONNECT TO 'Dev_Space:Snowflake_Sales_Perfomance';
+
+[SALES_FUNNEL_EVENTS]:
+LOAD ACCOUNT_FIRST_NAME, 
+	ACCOUNT_LAST_NAME, 
+	COMPANY_NAME, 
+	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL_FD, 
+	ORGANIZATION_CODE, 
+	EVENT_ID, 
+	EVENT_TYPE_CODE, 
+	EVENT_STATUS, 
+	ACCOUNT_CODE as SALESPERSON_ACCOUNT_CODE, 
+	EVENT_NAME, 
+	TOTAL_ATTENDANCE, 
+	Date(Floor(EVENT_START_DATE),'M/D/YYYY') AS EVENT_START_DATE,
+    //EVENT_START_DATE, 
+	//Date(EVENT_END_DATE) as EVENT_END_DATE,
+    Date(Floor(EVENT_END_DATE),'M/D/YYYY') AS EVENT_END_DATE,
+    //EVENT_END_DATE, 
+	EVENT_BOOKING_DATE, 
+	TENANT_ID as TENANT_ID_DETAILS, 
+	EXISTING_CUSTOMER, 
+	UPDATED_DATE,
+    EVENT_ID & '|' & TENANT_ID as %KEY_EVT_TENANT_ID;
+
+SELECT "ACCOUNT_FIRST_NAME",
+	"ACCOUNT_LAST_NAME",
+	"COMPANY_NAME",
+	"REDUCTION_EMAIL",
+	"ORGANIZATION_CODE",
+	"EVENT_ID",
+	"EVENT_TYPE_CODE",
+	"EVENT_STATUS",
+	"ACCOUNT_CODE",
+	"EVENT_NAME",
+	"TOTAL_ATTENDANCE",
+	"EVENT_START_DATE",
+	"EVENT_END_DATE",
+	"EVENT_BOOKING_DATE",
+	"TENANT_ID",
+	"EXISTING_CUSTOMER",
+	"UPDATED_DATE"
+FROM "MARTS"."SALES_FUNNEL"."SALES_FUNNEL_EVENTS";
