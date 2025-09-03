@@ -1,0 +1,556 @@
+///$tab Main
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='$ ###0.00;-$ ###0.00';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='M/D/YYYY';
+SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET FirstWeekDay=6;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-US';
+SET CreateSearchIndexOnReload=1;
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
+
+
+Let vStartDate=Num(Date(yearstart(AddYears(Today(),-58))));
+
+Let vEndDate=Num(Date(yearend(AddYears(Today(), +1))));
+///$tab Section Access
+/*
+
+// ====================================================================
+// SAFER Partial Reload for Section Access
+// Place this entire block at the VERY TOP of your load script.
+// ====================================================================
+ 
+IF IsPartialReload() THEN
+ 
+  SECTION ACCESS;
+ 
+  // Use 'REPLACE' to completely swap the security table.
+  // This ensures deleted users or changed permissions are handled correctly.
+  REPLACE LOAD Trim(Upper(ACCESS)) as ACCESS,
+      Trim(UPPER([USER.EMAIL])) as USER.EMAIL,
+      Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL;
+  LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+  SELECT ACCESS,
+      "USER.EMAIL",
+      "REDUCTION_EMAIL"
+  FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+  // This EXIT SCRIPT is vital. It stops the script from running further.
+  EXIT SCRIPT;
+ 
+ENDIF
+ 
+ 
+// ====================================================================
+// Your original, full reload script continues below, unchanged.
+// ====================================================================
+ 
+SECTION ACCESS;
+ 
+LIB CONNECT TO 'Dev_Space:Azure_SQL_Database_User_Info';
+ 
+[QlikUserGroupInfo]:
+LOAD Trim(Upper(ACCESS)) as ACCESS,  
+	Trim(UPPER([USER.EMAIL])) as USER.EMAIL, 
+	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL ;  
+SELECT ACCESS,
+	"USER.EMAIL",
+	"REDUCTION_EMAIL"
+FROM "intghub-dev".IntegrationHub.QlikUserGroupInfo;
+ 
+SECTION APPLICATION;
+
+*/
+///$tab Dimension Mapping
+LIB CONNECT TO [Dev_Space:Snowflake_Sales_Perfomance];
+
+[DIM_SALESPERSON]:
+LOAD  
+	SALESPERSON_ACCOUNT_CODE, 
+    //SALESPERSON_ACCOUNT_FIRST_NAME &' '& SALESPERSON_ACCOUNT_LAST_NAME as SALES_PERSON_NAME,
+    SALESPERSON_ACCOUNT_FULL_NAME as SALES_PERSON_NAME
+    ;
+
+SELECT "SALESPERSON_ORG",
+	"SALESPERSON_ACCOUNT_CODE",
+	"REDUCTION_EMAIL",
+	"SALESPERSON_ACCOUNT_FULL_NAME",
+	"SALESPERSON_ACCOUNT_FIRST_NAME",
+	"SALESPERSON_ACCOUNT_LAST_NAME",
+	"SALESPERSON_DESIGNATION",
+	"SALESPERSON_STATUS",
+	"SALESPERSON_CLASS",
+	"TENANT_ID"
+FROM "MARTS"."SHARED"."DIM_SALESPERSON"
+WHERE SALESPERSON_DESIGNATION = '1' AND SALESPERSON_STATUS = 'A' AND SALESPERSON_CLASS = 'P';
+
+[DIM_EVENT_TYPES]:
+LOAD  
+	EVENT_TYPE_CODE, 
+	EVENT_TYPE 
+    ;
+
+SELECT "EVENT_TYPES_ORG",
+	"EVENT_TYPE_CODE",
+	"EVENT_TYPE",
+	"TENANT_ID"
+FROM "MARTS"."SHARED"."DIM_EVENT_TYPES";
+
+
+[DIM_SPACE_DETAILS]:
+LOAD  
+	SPACE_CODE, 
+	SPACE_NAME,
+    SPACE_TYPE_CODE
+    ;
+
+SELECT "SPACE_DETAILS_ORG",
+	"SPACE_CODE",
+	"SPACE_NAME",
+	"SPACE_ABBR",
+	"SPACE_TYPE_CODE",
+	"SPACE_MAP_URL",
+	"SPACE_BASE_COMP_IND",
+	"SPACE_MIN_CAPACITY",
+	"SPACE_CAPACITY_AMT",
+	"SPACE_ACCT_CODE",
+	"SPACE_LEAD_HRS",
+	"SPACE_STRIKE_HRS",
+	"SPACE_UPD_STAMP",
+	"TENANT_ID",
+	"SPACE_NET_AREA",
+	"SPACE_DETAILS_STAMP"
+FROM "MARTS"."SHARED"."DIM_SPACE_DETAILS";
+
+[DIM_SPACE_TYPES]:
+LOAD SPACE_TYPE_CODE, 
+	SPACE_TYPE 
+    ;
+
+SELECT "SPACE_TYPE_CODE",
+	"SPACE_TYPE",
+	"TENANT_ID",
+	"SPACE_TYPES_STAMP"
+FROM "MARTS"."SHARED"."DIM_SPACE_TYPES";
+
+Tag Fields   
+ SPACE_TYPE_CODE
+with '$hidden';
+/*
+[DIM_SALES_GOAL]:
+LOAD SALES_GOAL_ID, 
+	SALES_GOAL_ORG, 
+	SALES_GOAL_FOR, 
+	SALES_GOAL_TYPE_ID, 
+	SALES_GOAL_EVENT_ID, 
+	SALES_GOAL_REP_ACCOUNT_CODE as ACCOUNT_CODE, 
+	SALES_GOAL_TOTAL_AMOUNT, 
+	SALES_GOAL_START_YEAR, 
+	SALES_GOAL_PERIOD_TYPE, 
+	SALES_GOAL_PERIOD, 
+	SALES_GOAL_TOTAL_PERIODS, 
+	SALES_GOAL_START_DATE, 
+	SALES_GOAL_END_DATE, 
+	SALES_GOAL_SHOW_TO_TEAM, 
+	SALES_GOAL_DEPARTMENT_CODE, 
+	SALES_GOAL_ENTERED_STAMP, 
+	SALES_GOAL_UPDATED_STAMP, 
+	SALES_GOAL_ENTERED_USER, 
+	SALES_GOAL_UPDATED_USER, 
+	IS_TEAM_GOAL, 
+	SALES_GOAL_IS_EVENT_SPECIFIC, 
+	SALES_GOAL_DESCRIPTION, 
+	TENANT_ID as TENANT_ID_DIM_SALESGOAL;
+
+SELECT "SALES_GOAL_ID",
+	"SALES_GOAL_ORG",
+	"SALES_GOAL_FOR",
+	"SALES_GOAL_TYPE_ID",
+	"SALES_GOAL_EVENT_ID",
+	"SALES_GOAL_REP_ACCOUNT_CODE",
+	"SALES_GOAL_TOTAL_AMOUNT",
+	"SALES_GOAL_START_YEAR",
+	"SALES_GOAL_PERIOD_TYPE",
+	"SALES_GOAL_PERIOD",
+	"SALES_GOAL_TOTAL_PERIODS",
+	"SALES_GOAL_START_DATE",
+	"SALES_GOAL_END_DATE",
+	"SALES_GOAL_SHOW_TO_TEAM",
+	"SALES_GOAL_DEPARTMENT_CODE",
+	"SALES_GOAL_ENTERED_STAMP",
+	"SALES_GOAL_UPDATED_STAMP",
+	"SALES_GOAL_ENTERED_USER",
+	"SALES_GOAL_UPDATED_USER",
+	"IS_TEAM_GOAL",
+	"SALES_GOAL_IS_EVENT_SPECIFIC",
+	"SALES_GOAL_DESCRIPTION",
+	"SALES_GOAL_TYPE_DESCRIPTION",
+	"TENANT_ID"
+FROM "MARTS"."SHARED"."DIM_SALES_GOAL";
+*/
+
+
+
+
+
+
+
+
+///$tab Auto-generated section
+// Rename conflicting data manager tables
+Set dataManagerTables = '','SALES_FUNNEL_EVENTS';
+
+For each name in $(dataManagerTables)
+    Let index = 0;
+    Let currentName = name; 
+    Let tableNumber = TableNumber(name); 
+    Let matches = 0; 
+    Do while not IsNull(tableNumber) or (index > 0 and matches > 0)
+        index = index + 1; 
+        currentName = name & '-' & index; 
+        tableNumber = TableNumber(currentName);
+        matches = Match('$(currentName)', $(dataManagerTables));
+    Loop 
+    If index > 0 then 
+        Rename Table '$(name)' to '$(currentName)'; 
+    EndIf; 
+Next; 
+
+Set dataManagerTables = ;
+
+LIB CONNECT TO [Dev_Space:Snowflake_Sales_Perfomance];
+
+
+[SALES_FUNNEL_EVENTS]:
+LOAD ACCOUNT_FIRST_NAME, 
+	ACCOUNT_LAST_NAME, 
+	COMPANY_NAME, 
+	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL, 
+	ORGANIZATION_CODE, 
+	EVENT_ID, 
+	EVENT_TYPE_CODE, 
+	EVENT_STATUS, 
+	SALESPERSON_ACCOUNT_CODE, 
+    ACCOUNT_CODE as ACCOUNT_CODE_FACT,
+	EVENT_NAME, 
+	TOTAL_ATTENDANCE, 
+    EVENT_START_DATE,
+    EVENT_END_DATE, 
+	EVENT_BOOKING_DATE,
+    DECISION_DATE,
+	TENANT_ID as TENANT_ID_DETAILS, 
+    TOTAL_GOAL_AMOUNT,
+    UPDATED_DATE,
+	EXISTING_CUSTOMER, 
+    EVENT_ID & '|' & TENANT_ID & '|' & ORGANIZATION_CODE as %KEY_EVT_TENANT_ORG_ID,
+    EVENT_ID & '|' & ORGANIZATION_CODE as %KEY_EVT_ORG_ID;
+    //Where Num(EVENT_START_DATE)>=$(vStartDate) and Num(EVENT_START_DATE)<=$(vEndDate);;
+
+SELECT "ACCOUNT_FIRST_NAME",
+	"ACCOUNT_LAST_NAME",
+	"COMPANY_NAME",
+	"REDUCTION_EMAIL",
+	"ORGANIZATION_CODE",
+	"EVENT_ID",
+	"EVENT_TYPE_CODE",
+	"EVENT_STATUS",
+    "SALESPERSON_ACCOUNT_CODE",
+	"ACCOUNT_CODE",
+	"EVENT_NAME",
+	"TOTAL_ATTENDANCE",
+	"EVENT_START_DATE",
+	"EVENT_END_DATE",
+	"EVENT_BOOKING_DATE",
+    "DECISION_DATE",
+	"TENANT_ID",
+    "TOTAL_GOAL_AMOUNT",
+	"UPDATED_DATE",
+	"EXISTING_CUSTOMER",
+FROM "MARTS"."SALES_FUNNEL"."SALES_FUNNEL_EVENTS"
+;
+
+Tag Fields   
+REDUCTION_EMAIL, EVENT_TYPE_CODE, EVENT_STATUS, EVENT_ID,
+SALESPERSON_ACCOUNT_CODE, ACCOUNT_CODE_FACT,  %KEY_EVT_TENANT_ORG_ID, %KEY_EVT_ORG_ID, TENANT_ID_DETAILS
+with '$hidden';
+
+[FACT_EVENT_REVENUE]:
+LOAD EVENT_ID as EVENT_ID_REV, 
+	TENANT_ID as TENANT_ID_REV, 
+	ORGANIZATION_CODE as ORGANIZATION_CODE_REV, 
+	PHASE, 
+	DEPARTMENT_CODE, 
+	ORDER_TYPE, 
+	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL_REV, 
+	REVENUE_AMOUNT, 
+	SPACE_CODE, 
+	EVENT_STATUS_CODE,
+    
+    IF(NUM(EVENT_STATUS_CODE) >= 1  AND NUM(EVENT_STATUS_CODE) <= 19, '1',//'Open',
+    IF(NUM(EVENT_STATUS_CODE) >= 20 AND NUM(EVENT_STATUS_CODE) <= 29, '2',//'Tentative',
+    IF(NUM(EVENT_STATUS_CODE) >= 30 AND NUM(EVENT_STATUS_CODE) <= 79, '3',//'Definite',
+    IF(NUM(EVENT_STATUS_CODE) = 85, '4',//'Lost',
+    IF(MATCH(NUM(EVENT_STATUS_CODE), 80,81,82,83,84,86,89), '5',// 'Canceled',
+    IF(NUM(EVENT_STATUS_CODE) >= 90 AND NUM(EVENT_STATUS_CODE) <= 95, '6'//'Archived',
+    )))))) AS EVENT_STATUS_CATEGORY_REVENUE,
+    
+    EVENT_ID & '|' & TENANT_ID & '|' & ORGANIZATION_CODE as %KEY_EVT_TENANT_ORG_ID;
+
+SELECT "EVENT_ID",
+	"TENANT_ID",
+	"ORGANIZATION_CODE",
+	"PHASE",
+	"DEPARTMENT_CODE",
+	"ORDER_TYPE",
+	"REDUCTION_EMAIL",
+	"REVENUE_AMOUNT",
+	"SPACE_CODE",
+	"EVENT_STATUS_CODE"
+FROM "MARTS"."SALES_FUNNEL"."FACT_EVENT_REVENUE";
+
+Tag Fields   
+ TENANT_ID_REV, ORGANIZATION_CODE_REV,
+REDUCTION_EMAIL_REV, SPACE_CODE, EVENT_STATUS_CODE, EVENT_STATUS_CATEGORY_REVENUE,
+%KEY_EVT_TENANT_ORG_ID
+with '$hidden';
+
+
+
+[EVENT_FUNNEL_HEALTH]:
+LOAD EVENT_ID as EVENT_ID_HEALTH,
+	ORGANIZATION_CODE as ORGANIZATION_CODE_HEALTH ,
+	EVENT_STATUS_CATEGORY, 
+	EVENT_STATUS_CODE as EVENT_STATUS_CODE_HEALTH, 
+	OPPORTUNITY_PREVIOUS_STATUS, 
+	OPPORTUNITY_CURRENT_STATUS, 
+    
+    IF(NUM(OPPORTUNITY_CURRENT_STATUS) >= 1  AND NUM(OPPORTUNITY_CURRENT_STATUS) <= 19, '1',//'Open',
+    IF(NUM(OPPORTUNITY_CURRENT_STATUS) >= 20 AND NUM(OPPORTUNITY_CURRENT_STATUS) <= 29, '2',//'Tentative',
+    IF(NUM(OPPORTUNITY_CURRENT_STATUS) >= 30 AND NUM(OPPORTUNITY_CURRENT_STATUS) <= 79, '3',//'Definite',
+    IF(NUM(OPPORTUNITY_CURRENT_STATUS) = 85, '4',//'Lost',
+    IF(MATCH(NUM(OPPORTUNITY_CURRENT_STATUS), 80,81,82,83,84,86,89), '5',// 'Canceled',
+    IF(NUM(OPPORTUNITY_CURRENT_STATUS) >= 90 AND NUM(OPPORTUNITY_CURRENT_STATUS) <= 95, '6'//'Archived',
+    )))))) AS EVENT_STATUS_CATEGORY_HEALTH,
+    
+	OPPORTUNITY_STATUS_CHANGE_STAMP, 
+	OPPORTUNITY_ENT_STAMP, 
+	AUDIT_EVENT_ID, 
+	Trim(UPPER(REDUCTION_EMAIL)) as REDUCTION_EMAIL_FH , 
+	TENANT_ID as TENANT_ID_HEALTH, 
+	STAGE_DURATION_DAYS,
+    EVENT_ID & '|' & ORGANIZATION_CODE as %KEY_EVT_ORG_ID
+    WHERE Len(Trim(EVENT_STATUS_CATEGORY)) > 0 AND      // ensure not empty
+    IsNum(EVENT_STATUS_CATEGORY) AND              // ensure numeric
+    Match(Num(Trim(EVENT_STATUS_CATEGORY)), 1, 2, 3, 4, 5, 6) AND
+    NOT IsNull(EVENT_ID) and 
+    NOT IsNull(OPPORTUNITY_CURRENT_STATUS) and 
+    NOT IsNull(EVENT_STATUS_CATEGORY);
+
+SELECT "EVENT_ID",
+"ORGANIZATION_CODE",
+	"EVENT_STATUS_CATEGORY",
+	"EVENT_STATUS_CODE",
+	"OPPORTUNITY_PREVIOUS_STATUS",
+	"OPPORTUNITY_CURRENT_STATUS",
+	"OPPORTUNITY_STATUS_CHANGE_STAMP",
+	"OPPORTUNITY_ENT_STAMP",
+	"AUDIT_EVENT_ID",
+	"REDUCTION_EMAIL",
+	"TENANT_ID",
+	"STAGE_DURATION_DAYS"
+FROM "MARTS"."SALES_FUNNEL"."EVENT_FUNNEL_HEALTH";
+
+Tag Fields ORGANIZATION_CODE_HEALTH, EVENT_ID_HEALTH, 
+EVENT_STATUS_CATEGORY, EVENT_STATUS_CODE_HEALTH, OPPORTUNITY_PREVIOUS_STATUS,
+AUDIT_EVENT_ID, REDUCTION_EMAIL_FH, TENANT_ID_HEALTH, EVENT_STATUS_CATEGORY_HEALTH,
+KEY_EVT_TENANT_ID
+with '$hidden';
+
+[DATA_FRESHNESS_LOG]:
+LOAD  
+	UPDATED_AT_UTC, 
+    ;
+
+SELECT "DATABASE_NAME",
+	"SCHEMA_NAME",
+	"TABLE_NAME",
+	"UPDATED_AT_UTC",
+	"DBT_RUN_ID",
+	"RUN_BY_MODEL"
+FROM "MARTS"."SHARED"."DATA_FRESHNESS_LOG"
+WHERE SCHEMA_NAME='sales_funnel';
+
+
+
+// Step 1: Max stage per SEQUENCE_NUMBER
+STAGE_MAX_STAGE:
+LOAD 
+    EVENT_ID_HEALTH
+    , 
+    Max(EVENT_STATUS_CATEGORY_HEALTH) as MaxStage
+RESIDENT EVENT_FUNNEL_HEALTH
+GROUP BY EVENT_ID_HEALTH 
+; 
+
+// Step 2: Stage progression base
+STAGE_PROGRESSION_BASE:
+LOAD 
+    EVENT_ID_HEALTH , 
+    EVENT_STATUS_CATEGORY_HEALTH as CurrentStage
+RESIDENT EVENT_FUNNEL_HEALTH
+WHERE NOT IsNull(EVENT_STATUS_CATEGORY_HEALTH);
+
+// Step 3: Join MaxStage
+INNER JOIN (STAGE_PROGRESSION_BASE)
+LOAD 
+    EVENT_ID_HEALTH ,
+    MaxStage
+RESIDENT STAGE_MAX_STAGE;
+
+// Step 4: Final progression table with HasNextStage flag
+STAGE_PROGRESSION_FINAL:
+LOAD 
+    EVENT_ID_HEALTH ,
+    CurrentStage,
+    If(CurrentStage < MaxStage, 1, 0) as HasNextStage
+RESIDENT STAGE_PROGRESSION_BASE;
+
+Tag Fields CurrentStage, HasNextStage with '$hidden';
+
+// Clean up intermediate table
+
+
+DROP TABLE STAGE_PROGRESSION_BASE;
+DROP TABLE STAGE_MAX_STAGE;
+
+
+
+
+// AutoCalendar script unchanged...
+[autoCalendar]: 
+  DECLARE FIELD DEFINITION Tagged ('$date')
+FIELDS
+  Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
+  Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged ('$quarter', '$cyclic'),
+  Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged ('$yearquarter', '$qualified'),
+  Dual('Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [_YearQuarter] Tagged ('$yearquarter', '$hidden', '$simplified'),
+  Month($1) AS [Month] Tagged ('$month', '$cyclic'),
+  Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth', '$qualified'),
+  Dual(Month($1), monthstart($1)) AS [_YearMonth] Tagged ('$axis', '$yearmonth', '$simplified', '$hidden'),
+  Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber', '$cyclic'),
+  Date(Floor($1)) AS [Date] Tagged ('$axis', '$date', '$qualified'),
+  Date(Floor($1), 'D') AS [_Date] Tagged ('$axis', '$date', '$hidden', '$simplified'),
+  If (DayNumberOfYear($1) <= DayNumberOfYear(Today()), 1, 0) AS [InYTD] ,
+  Year(Today())-Year($1) AS [YearsAgo] ,
+  If (DayNumberOfQuarter($1) <= DayNumberOfQuarter(Today()),1,0) AS [InQTD] ,
+  4*Year(Today())+Ceil(Month(Today())/3)-4*Year($1)-Ceil(Month($1)/3) AS [QuartersAgo] ,
+  Ceil(Month(Today())/3)-Ceil(Month($1)/3) AS [QuarterRelNo] ,
+  If(Day($1)<=Day(Today()),1,0) AS [InMTD] ,
+  12*Year(Today())+Month(Today())-12*Year($1)-Month($1) AS [MonthsAgo] ,
+  Month(Today())-Month($1) AS [MonthRelNo] ,
+  If(WeekDay($1)<=WeekDay(Today()),1,0) AS [InWTD] ,
+  (WeekStart(Today())-WeekStart($1))/7 AS [WeeksAgo] ,
+  Week(Today())-Week($1) AS [WeekRelNo] ;
+  
+  
+
+
+///$tab Master Calendar Start Date
+QuarterMap:
+Mapping Load
+RowNo() as Month,
+'Q' & Ceil(RowNo()/3) as Quarter
+AutoGenerate 12;
+
+
+
+MinMaxDates:
+Load 
+min(Date(EVENT_START_DATE ,'M/D/YYYY'))                                as minDate,
+max(Date(EVENT_START_DATE ,'M/D/YYYY'))                                as maxDate
+Resident SALES_FUNNEL_EVENTS;
+
+Let vMinDate = num(Peek('minDate',0,'MinMaxDates'));
+Let vMaxDate = num(Peek('maxDate',0,'MinMaxDates'));
+Drop Table MinMaxDates;
+
+
+TempCalendar:
+
+Load 
+$(vMinDate) + IterNo() as Num,
+Date($(vMinDate)+IterNo()-1) as TempDate
+AutoGenerate 1 while $(vMinDate) + IterNo()-1 <= $(vMaxDate);
+
+MasterCalendar_STARTDATE:
+Load
+Date(Floor(TempDate),'M/D/YYYY') as EVENT_START_DATE,
+//Date(TempDate,'M/D/YYYY') as OPPORTUNITY_START_DATE,
+Date(Floor(TempDate),'M/D/YYYY') as START_DATE,
+Week(TempDate) as START_WEEK,
+Year(TempDate) as START_YEAR,
+//Month(TempDate) as Start_Month,
+Dual(Month(TempDate), Month(TempDate)) as START_MONTH,
+Date(monthstart(TempDate), 'MMM YYYY') as START_MONTHYEAR,
+ApplyMap('QuarterMap',Month(TempDate),Null()) AS START_QUARTER
+
+Resident TempCalendar
+Order by TempDate asc;
+Drop Table TempCalendar;
+
+Tag Field START_DATE with '$hidden','$date';
+
+
+///$tab Master Calendar End Date
+QuarterMap:
+Mapping Load
+RowNo() as Month,
+'Q' & Ceil(RowNo()/3) as Quarter
+AutoGenerate 12;
+
+
+
+MinMaxDates:
+Load 
+min(Date(EVENT_END_DATE ,'M/D/YYYY'))                                as minDate,
+max(Date(EVENT_END_DATE ,'M/D/YYYY'))                                as maxDate
+Resident SALES_FUNNEL_EVENTS;
+
+Let vMinDate = num(Peek('minDate',0,'MinMaxDates'));
+Let vMaxDate = num(Peek('maxDate',0,'MinMaxDates'));
+Drop Table MinMaxDates;
+
+
+TempCalendar:
+
+Load 
+$(vMinDate) + IterNo() as Num,
+Date($(vMinDate)+IterNo()-1) as TempDate
+AutoGenerate 1 while $(vMinDate) + IterNo()-1 <= $(vMaxDate);
+
+MasterCalendar_ENDDATE:
+Load
+Date(Floor(TempDate),'M/D/YYYY') as EVENT_END_DATE,
+//Date(TempDate,'M/D/YYYY') as OPPORTUNITY_END_DATE,
+Date(Floor(TempDate),'M/D/YYYY') as END_DATE,
+Week(TempDate) as END_WEEK,
+Year(TempDate) as END_YEAR,
+Dual(Month(TempDate), Month(TempDate)) as END_MONTH,
+Date(monthstart(TempDate), 'MMM YYYY') as END_MONTHYEAR,
+ApplyMap('QuarterMap',Month(TempDate),Null()) AS END_QUARTER
+
+Resident TempCalendar
+Order by TempDate asc;
+Drop Table TempCalendar;
+
+Tag Field END_DATE with '$hidden','$date';
