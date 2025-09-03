@@ -321,7 +321,7 @@ ApplyMap('DIM_REVENUE_ELEMENT',DEPARTMENT_CODE) AS DEPARTMENT_NAME
 Resident FACT_RETENTION_RATE;
 Drop Table FACT_RETENTION_RATE;
 
-Tag Fields KPI,EVENT_ID,REV_EVENT_ID,CYRevenue,SQ_FT,SpaceType,TENANT_ID,BOOKING_MONTH,link_Date,
+Tag Fields EVENT_ID,REV_EVENT_ID,CYRevenue,SQ_FT,SpaceType,TENANT_ID,BOOKING_MONTH,link_Date,
 CYRevenue,CYSales,CY_OCCUPANCY_RATE,PY_OCCUPANCY_RATE,
 PYRevenue,PYSales,SPACE_TYPE_CODE,SPACE_CODE,MONTH_START,LEAD_SOURCE_CODE,EVENT_TYPE_CODE,DEPARTMENT_CODE,REDUCTION_EMAIL with '$hidden';
 ///$tab Master Calendar
@@ -397,21 +397,24 @@ Unqualify *;
 
 [Current_Year_Sales]:
 LOAD
-     Pace.BookingMonth aS Booking_Month,Pace.EventMonth As Event_Month,
+     Pace.BookingMonth as Booking_Month,
+     Year(Pace.BookingMonth) as Booking_Year,
+     Pace.EventMonth As Event_Month,
      'Sales' AS KPI,
-    Sum(Pace.REVENUE_AMOUNT) AS CYRevenue,
-    Count(DISTINCT Pace.EVENT_ID) AS CYSales
+     Sum(Pace.REVENUE_AMOUNT) AS CYRevenue,
+     Count(DISTINCT Pace.EVENT_ID) AS CYSales
 RESIDENT Pace
-GROUP BY Pace.BookingMonth,Pace.EventMonth;
+GROUP BY Pace.BookingMonth,Pace.EventMonth,Year(Pace.BookingMonth);
 
 Left Keep(Current_Year_Sales)
 Previous_Year_Sales:
 LOAD
-  Pace.PYBookMonth aS Booking_Month,
+    Pace.PYBookMonth as Booking_Month,
+    Year(Pace.PYBookMonth) as Booking_Year,
     Sum(Pace.REVENUE_AMOUNT) AS PYRevenue,
     Count(DISTINCT Pace.EVENT_ID) AS PYSales
 RESIDENT Pace
-GROUP BY Pace.PYBookMonth;
+GROUP BY Pace.PYBookMonth,Year(Pace.PYBookMonth);
 
 Drop Table Pace;
  
@@ -442,6 +445,7 @@ Unqualify *;
 Concatenate(Current_Year_Sales)   
 Occupany:
 Load Occ.BookingMonth AS Booking_Month,
+	 Year(Occ.BookingMonth) AS Booking_Year,
 	 Occ.EventMonth AS Event_Month,
      'Occupancy' AS KPI,
      Occ.OCCUPANCY_RATE AS CY_OCCUPANCY_RATE
@@ -450,6 +454,7 @@ Resident Occ; //Group By [Occ.BookingMonth],[Occ.EventMonth];
 Left Keep(Current_Year_Sales)
 Previous_Year_OCC:
 Load Occ.PYBookMonth AS Booking_Month,
+	Year(Occ.PYBookMonth) AS Booking_Year,
 	'Occupancy' aS KPI,
      Occ.OCCUPANCY_RATE AS PY_OCCUPANCY_RATE
 Resident Occ;// Group By [Occ.PYBookMonth],[Occ.EventMonth];
