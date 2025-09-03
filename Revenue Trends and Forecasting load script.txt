@@ -24,7 +24,6 @@ Let vStartDate=Num(Date(yearstart(AddYears(Today(),-58))));
 Let vEndDate=Num(Date(yearend(AddYears(Today(), +1))));
 ///$tab Section Access
 
-
 // ====================================================================
 // SAFER Partial Reload for Section Access
 // Place this entire block at the VERY TOP of your load script.
