@@ -1,6 +1,6 @@
 
 SHEETS
-{"qInfo":{"qId":"1e09fbc8-f62a-41aa-91a4-1cce81f55515","qType":"sheet"},"qMeta":{"title":"Sales Funnel (Converted Events from Event Opps)","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"1e09fbc8-f62a-41aa-91a4-1cce81f55515","approved":false,"published":true,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-26T07:23:15.895Z","modifiedDate":"2025-08-28T08:08:35.808Z","publishTime":"2025-08-28T08:08:40.428Z","privileges":["read","publish"]},"qData":[]}
+{"qInfo":{"qId":"1e09fbc8-f62a-41aa-91a4-1cce81f55515","qType":"sheet"},"qMeta":{"title":"Sales Funnel (Converted Events from Event Opps)","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"1e09fbc8-f62a-41aa-91a4-1cce81f55515","approved":false,"published":true,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-26T07:23:15.895Z","modifiedDate":"2025-09-04T16:12:45.097Z","publishTime":"2025-09-04T16:15:42.954Z","privileges":["read","publish"]},"qData":[]}
 
 OBJECTS ON SHEETS
 {"name":"b25a6d99-94bb-404b-8721-e210e2e62396","type":"sn-layout-container","col":0,"row":3,"colspan":84,"rowspan":10,"bounds":{"x":0,"y":2.4390243902439033,"width":100,"height":8.13008130081301}}
@@ -16,6 +16,7 @@ OBJECTS ON SHEETS
 {"name":"MujQKQw","type":"sn-layout-container","col":0,"row":51,"colspan":45,"rowspan":24,"bounds":{"x":0,"y":41.46341463414635,"width":53.57142857142857,"height":19.512195121951226}}
 
 DIMENSIONS
+{"qInfo":{"qId":"pfTng","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"pfTng","approved":false,"published":false,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-09-04T16:12:45.099Z","modifiedDate":"2025-09-04T16:12:45.099Z","encrypted":true,"privileges":["read","update","delete","publish"],"title":"Account Name","description":"","tags":[]},"qData":[]}
 {"qInfo":{"qId":"7dca8e6c-d574-46a3-a4d1-0e65bee3cd1a","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"7dca8e6c-d574-46a3-a4d1-0e65bee3cd1a","approved":false,"published":false,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-26T07:23:15.945Z","modifiedDate":"2025-08-26T07:23:15.945Z","encrypted":true,"privileges":["read","update","delete","publish"],"title":"Opportunity Stage","description":"Stage","tags":[]},"qData":[]}
 {"qInfo":{"qId":"THvjM","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"THvjM","approved":false,"published":false,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-26T07:23:15.946Z","modifiedDate":"2025-08-26T07:23:15.946Z","encrypted":true,"privileges":["read","update","delete","publish"],"title":"Stage","description":"Stage","tags":[]},"qData":[]}
 {"qInfo":{"qId":"jJavJJQ","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"jJavJJQ","approved":false,"published":false,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-26T07:23:15.955Z","modifiedDate":"2025-08-26T07:23:15.955Z","encrypted":true,"privileges":["read","update","delete","publish"],"title":"Opportunity Name","description":"","tags":[]},"qData":[]}
@@ -54,7 +55,7 @@ VARIABLES
 {"qName":"currentName","qDefinition":"SALES_FUNNEL_DETAILS","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"bef90a3a-310d-4cb5-a6a9-1a3390354db4","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"index","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c23dd776-ee06-486d-9350-542ed203ef87","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"matches","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"410b3677-af79-480d-bc72-836a715d7362","qType":"variable"},"qData":[],"qIsScriptCreated":true}
-{"qName":"vMaxDate","qDefinition":"49148","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"6d8882a3-6b6a-4ffc-b0f3-ad7ddcfa3878","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"vMaxDate","qDefinition":"48944","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"6d8882a3-6b6a-4ffc-b0f3-ad7ddcfa3878","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"vMinDate","qDefinition":"35138","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"dfc461da-66b0-47f4-9d5e-0ab40016bb77","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"name","qDefinition":"SALES_FUNNEL_DETAILS","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"ce28088d-edbf-4707-92aa-08ebf98c7498","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"vStartYearSelectedDate","qDefinition":"= Date(YearStart(Max(START_DATE)))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"9ab51601-57ea-4315-b6a5-cc8d4022518d","qType":"variable"},"qData":[]}
@@ -74,71 +75,72 @@ VARIABLES
 {"qName":"vPrevYearStart","qDefinition":"=Date(Yearstart(AddYears(max(START_DATE),-1)),'M\/D\/YYYY')","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"5d543550-c856-4585-8c09-8708bfce2357","qType":"variable"},"qData":[]}
 
 FIELDS
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":72,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":73,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":11,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":11,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":10,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":7,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":28,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qName":"SALESPERSON_ACCOUNT_CODE","qCardinal":5127,"qTags":["$key","$ascii","$text"],"qSrcTables":["DIM_SALESPERSON","SALES_FUNNEL_DETAILS"]}
-{"qName":"SALES_PERSON_NAME","qCardinal":4018,"qTags":["$text"],"qSrcTables":["DIM_SALESPERSON"]}
-{"qIsHidden":true,"qName":"EVENT_TYPE_CODE","qCardinal":373,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"EVENT_TYPE","qCardinal":341,"qTags":["$text"],"qSrcTables":["DIM_EVENT_TYPES"]}
-{"qIsHidden":true,"qName":"SPACE_CODE","qCardinal":6735,"qTags":["$key","$hidden","$text"],"qSrcTables":[]}
-{"qName":"SPACE_NAME","qCardinal":6680,"qTags":["$text"],"qSrcTables":["DIM_SPACE_DETAILS"]}
-{"qIsHidden":true,"qName":"SPACE_TYPE_CODE","qCardinal":115,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"SPACE_TYPE","qCardinal":128,"qTags":["$ascii","$text"],"qSrcTables":["DIM_SPACE_TYPES"]}
-{"qName":"ACCOUNT_FIRST_NAME","qCardinal":87,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"ACCOUNT_LAST_NAME","qCardinal":94,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"COMPANY_NAME","qCardinal":44,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qIsHidden":true,"qName":"REDUCTION_EMAIL","qCardinal":90,"qTags":["$hidden"],"qSrcTables":[]}
-{"qName":"ORGANIZATION_CODE","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"OPP_ID","qCardinal":358,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"OPPORTUNITY_EVENT_ID","qCardinal":361,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qIsHidden":true,"qName":"OPPORTUNITY_EVENT_STATUS_CODE","qCardinal":41,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"SALESPERSON_ACCOUNT_CODE","qCardinal":463,"qTags":["$key","$ascii","$text"],"qSrcTables":["DIM_SALESPERSON","SALES_FUNNEL_DETAILS"]}
+{"qName":"SALES_PERSON_NAME","qCardinal":369,"qTags":["$text"],"qSrcTables":["DIM_SALESPERSON"]}
+{"qIsHidden":true,"qName":"EVENT_TYPE_CODE","qCardinal":103,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"EVENT_TYPE","qCardinal":90,"qTags":["$text"],"qSrcTables":["DIM_EVENT_TYPES"]}
+{"qIsHidden":true,"qName":"SPACE_CODE","qCardinal":1390,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"SPACE_NAME","qCardinal":1356,"qTags":["$text"],"qSrcTables":["DIM_SPACE_DETAILS"]}
+{"qIsHidden":true,"qName":"SPACE_TYPE_CODE","qCardinal":69,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"SPACE_TYPE","qCardinal":69,"qTags":["$ascii","$text"],"qSrcTables":["DIM_SPACE_TYPES"]}
+{"qName":"ACCOUNT_FIRST_NAME","qCardinal":24,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"ACCOUNT_LAST_NAME","qCardinal":24,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"ACCOUNT_FULL_NAME","qCardinal":24,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"COMPANY_NAME","qCardinal":12,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qIsHidden":true,"qName":"REDUCTION_EMAIL","qCardinal":23,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"ORGANIZATION_CODE","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"OPP_ID","qCardinal":81,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"OPPORTUNITY_EVENT_ID","qCardinal":81,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qIsHidden":true,"qName":"OPPORTUNITY_EVENT_STATUS_CODE","qCardinal":13,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"EVENT_STATUS_CATEGORY_DETAILS","qCardinal":6,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"OPPORTUNITY_LEAD_SOURCE_CODE","qCardinal":17,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"WIN_PROB","qCardinal":12,"qTags":["$numeric"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qIsHidden":true,"qName":"ACCOUNT_CODE_FACT","qCardinal":255,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"OPPORTUNITY_NAME","qCardinal":354,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"OPPORTUNITY_TOTAL_ATTENDANCE","qCardinal":76,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"OPPORTUNITY_START_DATE","qCardinal":327,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"OPPORTUNITY_END_DATE","qCardinal":331,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"OPPORTUNITY_DATE_BOOKED","qCardinal":47,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"OPPORTUNITY_DECISION_DATE","qCardinal":76,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qIsHidden":true,"qName":"TENANT_ID_DETAILS","qCardinal":8,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"OPPORTUNITY_LEAD_SOURCE_CODE","qCardinal":11,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"WIN_PROB","qCardinal":7,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qIsHidden":true,"qName":"ACCOUNT_CODE_FACT","qCardinal":59,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"OPPORTUNITY_NAME","qCardinal":78,"qTags":["$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"OPPORTUNITY_TOTAL_ATTENDANCE","qCardinal":34,"qTags":["$numeric","$integer"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"OPPORTUNITY_START_DATE","qCardinal":77,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"OPPORTUNITY_END_DATE","qCardinal":79,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"OPPORTUNITY_DATE_BOOKED","qCardinal":15,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"OPPORTUNITY_DECISION_DATE","qCardinal":26,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qIsHidden":true,"qName":"TENANT_ID_DETAILS","qCardinal":1,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qName":"EXISTING_CUSTOMER","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"TOTAL_GOAL_AMOUNT","qCardinal":115,"qTags":["$numeric"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qName":"OPPORTUNITY_UPDATED_DATE","qCardinal":123,"qTags":["$numeric","$timestamp"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
-{"qIsHidden":true,"qName":"%KEY_EVT_TENANT_ORG_ID","qCardinal":737,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"%KEY_EVT_ORG_ID","qCardinal":362,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"TOTAL_GOAL_AMOUNT","qCardinal":34,"qTags":["$numeric"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qName":"OPPORTUNITY_UPDATED_DATE","qCardinal":22,"qTags":["$numeric","$timestamp"],"qSrcTables":["SALES_FUNNEL_DETAILS"]}
+{"qIsHidden":true,"qName":"%KEY_EVT_TENANT_ORG_ID","qCardinal":81,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"%KEY_EVT_ORG_ID","qCardinal":81,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qName":"EVENT_START_DATE","qCardinal":13447,"qTags":["$key","$numeric","$integer","$timestamp","$date"],"qSrcTables":["FACT_REVENUE","MasterCalendar_STARTDATE"]}
-{"qName":"EVENT_END_DATE","qCardinal":14011,"qTags":["$key","$numeric","$integer","$timestamp","$date"],"qSrcTables":["FACT_REVENUE","MasterCalendar_ENDDATE"]}
-{"qIsHidden":true,"qName":"SALESPERSON_ACCOUNT_CODE_REV","qCardinal":101,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"REDUCTION_EMAIL_REV","qCardinal":91,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"EVENT_END_DATE","qCardinal":13807,"qTags":["$key","$numeric","$integer","$timestamp","$date"],"qSrcTables":["FACT_REVENUE","MasterCalendar_ENDDATE"]}
+{"qIsHidden":true,"qName":"SALESPERSON_ACCOUNT_CODE_REV","qCardinal":23,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"REDUCTION_EMAIL_REV","qCardinal":21,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qName":"PHASE","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["FACT_REVENUE"]}
-{"qIsHidden":true,"qName":"DEPARTMENT_CODE","qCardinal":75,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"DEPARTMENT_CODE","qCardinal":24,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qName":"ORDER_TYPE","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["FACT_REVENUE"]}
-{"qIsHidden":true,"qName":"OPPORTUNITY_EVT_ID_REV","qCardinal":301,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"TENANT_ID","qCardinal":8,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"ORGANIZATION_CODE_REV","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["FACT_REVENUE"]}
-{"qName":"REVENUE_AMOUNT","qCardinal":1306,"qTags":["$numeric"],"qSrcTables":["FACT_REVENUE"]}
-{"qIsHidden":true,"qName":"EVENT_STATUS_CODE","qCardinal":35,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"OPPORTUNITY_EVT_ID_REV","qCardinal":56,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"TENANT_ID","qCardinal":1,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"ORGANIZATION_CODE_REV","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["FACT_REVENUE"]}
+{"qName":"REVENUE_AMOUNT","qCardinal":221,"qTags":["$numeric"],"qSrcTables":["FACT_REVENUE"]}
+{"qIsHidden":true,"qName":"EVENT_STATUS_CODE","qCardinal":11,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"EVENT_STATUS_CATEGORY_REVENUE","qCardinal":5,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"OPPORTUNITY_EVENT_ID_HEALTH","qCardinal":130,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"OPPORTUNITY_EVENT_ID_HEALTH","qCardinal":55,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
 {"qName":"ORGANIZATION_CODE_HEALTH","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
-{"qIsHidden":true,"qName":"OPPORTUNITY_ID","qCardinal":128,"qTags":["$key","$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"EVENT_STATUS_CODE_HEALTH","qCardinal":26,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"OPPORTUNITY_PREVIOUS_STATUS","qCardinal":20,"qTags":["$ascii","$text"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
-{"qName":"OPPORTUNITY_CURRENT_STATUS","qCardinal":31,"qTags":["$ascii","$text"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
-{"qIsHidden":true,"qName":"EVENT_STATUS_CATEGORY_HEALTH","qCardinal":5,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qName":"OPPORTUNITY_STATUS_CHANGE_STAMP","qCardinal":221,"qTags":["$numeric","$timestamp"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
-{"qIsHidden":true,"qName":"AUDIT_EVENT_ID","qCardinal":130,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"REDUCTION_EMAIL_FH","qCardinal":44,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qName":"TENANT_ID_HEALTH","qCardinal":8,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
-{"qName":"STAGE_DURATION_DAYS","qCardinal":34,"qTags":["$numeric","$integer"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
-{"qName":"UPDATED_AT_UTC","qCardinal":1056,"qTags":["$numeric","$timestamp"],"qSrcTables":["DATA_FRESHNESS_LOG"]}
-{"qIsHidden":true,"qName":"CurrentStage","qCardinal":5,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"OPPORTUNITY_ID","qCardinal":55,"qTags":["$key","$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"EVENT_STATUS_CODE_HEALTH","qCardinal":9,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"OPPORTUNITY_PREVIOUS_STATUS","qCardinal":10,"qTags":["$ascii","$text"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
+{"qName":"OPPORTUNITY_CURRENT_STATUS","qCardinal":11,"qTags":["$ascii","$text"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
+{"qIsHidden":true,"qName":"EVENT_STATUS_CATEGORY_HEALTH","qCardinal":4,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qName":"OPPORTUNITY_STATUS_CHANGE_STAMP","qCardinal":112,"qTags":["$numeric","$timestamp"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
+{"qIsHidden":true,"qName":"AUDIT_EVENT_ID","qCardinal":55,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"REDUCTION_EMAIL_FH","qCardinal":17,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"TENANT_ID_HEALTH","qCardinal":1,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"STAGE_DURATION_DAYS","qCardinal":13,"qTags":["$numeric","$integer"],"qSrcTables":["FACT_FUNNEL_HEALTH"]}
+{"qName":"UPDATED_AT_UTC","qCardinal":1187,"qTags":["$numeric","$timestamp"],"qSrcTables":["DATA_FRESHNESS_LOG"]}
+{"qIsHidden":true,"qName":"CurrentStage","qCardinal":4,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"HasNextStage","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"START_DATE","qCardinal":13447,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
 {"qName":"START_WEEK","qCardinal":54,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar_STARTDATE"]}
@@ -146,9 +148,9 @@ FIELDS
 {"qName":"START_MONTH","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar_STARTDATE"]}
 {"qName":"START_MONTHYEAR","qCardinal":443,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["MasterCalendar_STARTDATE"]}
 {"qName":"START_QUARTER","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["MasterCalendar_STARTDATE"]}
-{"qIsHidden":true,"qName":"END_DATE","qCardinal":14011,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"END_DATE","qCardinal":13807,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
 {"qName":"END_WEEK","qCardinal":54,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar_ENDDATE"]}
-{"qName":"END_YEAR","qCardinal":39,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar_ENDDATE"]}
+{"qName":"END_YEAR","qCardinal":38,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar_ENDDATE"]}
 {"qName":"END_MONTH","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["MasterCalendar_ENDDATE"]}
-{"qName":"END_MONTHYEAR","qCardinal":461,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["MasterCalendar_ENDDATE"]}
+{"qName":"END_MONTHYEAR","qCardinal":454,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["MasterCalendar_ENDDATE"]}
 {"qName":"END_QUARTER","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["MasterCalendar_ENDDATE"]}
