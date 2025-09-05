@@ -1,6 +1,6 @@
 
 SHEETS
-{"qInfo":{"qId":"1e09fbc8-f62a-41aa-91a4-1cce81f55515","qType":"sheet"},"qMeta":{"title":"Sales Funnel (Converted Events from Event Opps)","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"1e09fbc8-f62a-41aa-91a4-1cce81f55515","approved":false,"published":true,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-26T07:23:15.895Z","modifiedDate":"2025-09-05T10:12:24.896Z","publishTime":"2025-09-05T10:14:02.258Z","privileges":["read","publish"]},"qData":[]}
+{"qInfo":{"qId":"1e09fbc8-f62a-41aa-91a4-1cce81f55515","qType":"sheet"},"qMeta":{"title":"Sales Funnel (Converted Events from Event Opps)","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"1e09fbc8-f62a-41aa-91a4-1cce81f55515","approved":false,"published":true,"owner":"auth0|377e8bdacf5ffbc37f20e467db078bac0517bbe621deb98ceb87082562fec8d4","ownerId":"67e26330a98f9eb09b1c8a05","createdDate":"2025-08-26T07:23:15.895Z","modifiedDate":"2025-09-05T10:12:24.896Z","publishTime":"2025-09-05T10:18:13.881Z","privileges":["read","publish"]},"qData":[]}
 
 OBJECTS ON SHEETS
 {"name":"b25a6d99-94bb-404b-8721-e210e2e62396","type":"sn-layout-container","col":0,"row":3,"colspan":84,"rowspan":10,"bounds":{"x":0,"y":2.4390243902439033,"width":100,"height":8.13008130081301}}
