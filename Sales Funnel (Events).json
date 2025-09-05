@@ -138,7 +138,7 @@ FIELDS
 {"qIsHidden":true,"qName":"REDUCTION_EMAIL_FH","qCardinal":75,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"TENANT_ID_HEALTH","qCardinal":1,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
 {"qName":"STAGE_DURATION_DAYS","qCardinal":198,"qTags":["$numeric","$integer"],"qSrcTables":["EVENT_FUNNEL_HEALTH"]}
-{"qName":"UPDATED_AT_UTC","qCardinal":1195,"qTags":["$numeric","$timestamp"],"qSrcTables":["DATA_FRESHNESS_LOG"]}
+{"qName":"UPDATED_AT_UTC","qCardinal":1196,"qTags":["$numeric","$timestamp"],"qSrcTables":["DATA_FRESHNESS_LOG"]}
 {"qIsHidden":true,"qName":"CurrentStage","qCardinal":6,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"HasNextStage","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qName":"START_DATE","qCardinal":56867,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
