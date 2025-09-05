@@ -1,0 +1,397 @@
+///$tab Main
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='$ ###0.00;-$ ###0.00';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='M/D/YYYY';
+SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET FirstWeekDay=6;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-US';
+SET CreateSearchIndexOnReload=1;
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
+
+
+///$tab Auto Generated Section
+// AutoCalendar script unchanged...
+[autoCalendar]: 
+  DECLARE FIELD DEFINITION Tagged ('$date')
+FIELDS
+  Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
+  Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged ('$quarter', '$cyclic'),
+  Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged ('$yearquarter', '$qualified'),
+  Dual('Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [_YearQuarter] Tagged ('$yearquarter', '$hidden', '$simplified'),
+  Month($1) AS [Month] Tagged ('$month', '$cyclic'),
+  Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth', '$qualified'),
+  Dual(Month($1), monthstart($1)) AS [_YearMonth] Tagged ('$axis', '$yearmonth', '$simplified', '$hidden'),
+  Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber', '$cyclic'),
+  Date(Floor($1)) AS [Date] Tagged ('$axis', '$date', '$qualified'),
+  Date(Floor($1), 'D') AS [_Date] Tagged ('$axis', '$date', '$hidden', '$simplified'),
+  If (DayNumberOfYear($1) <= DayNumberOfYear(Today()), 1, 0) AS [InYTD] ,
+  Year(Today())-Year($1) AS [YearsAgo] ,
+  If (DayNumberOfQuarter($1) <= DayNumberOfQuarter(Today()),1,0) AS [InQTD] ,
+  4*Year(Today())+Ceil(Month(Today())/3)-4*Year($1)-Ceil(Month($1)/3) AS [QuartersAgo] ,
+  Ceil(Month(Today())/3)-Ceil(Month($1)/3) AS [QuarterRelNo] ,
+  If(Day($1)<=Day(Today()),1,0) AS [InMTD] ,
+  12*Year(Today())+Month(Today())-12*Year($1)-Month($1) AS [MonthsAgo] ,
+  Month(Today())-Month($1) AS [MonthRelNo] ,
+  If(WeekDay($1)<=WeekDay(Today()),1,0) AS [InWTD] ,
+  (WeekStart(Today())-WeekStart($1))/7 AS [WeeksAgo] ,
+  Week(Today())-Week($1) AS [WeekRelNo] ;
+  
+  DERIVE FIELDS FROM FIELDS [EVENT_START_DATE] USING [autoCalendar] ;
+///$tab Dimensions
+LIB CONNECT TO 'Dev_Space:Snowflake_Sales_Perfomance';
+
+[DIM_EVENT_TYPES]:
+LOAD EVENT_TYPES_ORG, 
+	EVENT_TYPE_CODE, 
+	EVENT_TYPE; 
+	
+SELECT "EVENT_TYPES_ORG",
+	"EVENT_TYPE_CODE",
+	"EVENT_TYPE"
+FROM "MARTS"."SHARED"."DIM_EVENT_TYPES";
+
+[DIM_REVENUE_ELEMENT]:
+LOAD REVENUE_ELEMENT_ORG, 
+	DEPARTMENT_CODE, 
+	REVENUE_ELEMENT_NAME, 
+	REVENUE_ELEMENT_STATUS, 
+	REVENUE_ELEMENT_UPD_STAMP, 
+	REVENUE_ELEMENT_STAMP;
+
+SELECT "REVENUE_ELEMENT_ORG",
+	"DEPARTMENT_CODE",
+	"REVENUE_ELEMENT_NAME",
+	"REVENUE_ELEMENT_STATUS",
+	"REVENUE_ELEMENT_UPD_STAMP",
+	"REVENUE_ELEMENT_STAMP"
+FROM "MARTS"."SHARED"."DIM_REVENUE_ELEMENT";
+
+// [DIM_SALESPERSON]:
+// LOAD SALESPERSON_ORG, 
+// 	SALESPERSON_ACCOUNT_CODE, 
+// 	REDUCTION_EMAIL, 
+// 	SALESPERSON_ACCOUNT_FULL_NAME, 
+// 	SALESPERSON_ACCOUNT_FIRST_NAME, 
+// 	SALESPERSON_ACCOUNT_LAST_NAME, 
+// 	SALESPERSON_DESIGNATION, 
+// 	SALESPERSON_STATUS, 
+// 	SALESPERSON_CLASS; 
+	
+
+// SELECT "SALESPERSON_ORG",
+// 	"SALESPERSON_ACCOUNT_CODE",
+// 	"REDUCTION_EMAIL",
+// 	"SALESPERSON_ACCOUNT_FULL_NAME",
+// 	"SALESPERSON_ACCOUNT_FIRST_NAME",
+// 	"SALESPERSON_ACCOUNT_LAST_NAME",
+// 	"SALESPERSON_DESIGNATION",
+// 	"SALESPERSON_STATUS",
+// 	"SALESPERSON_CLASS"
+// FROM "MARTS"."SHARED"."DIM_SALESPERSON";
+
+// [DIM_SALES_CHANNEL]:
+// LOAD LEAD_SOURCE_CODE, 
+// 	LEAD_SOURCE_DESCRIPTION;	
+
+// SELECT "LEAD_SOURCE_CODE",
+// 	"LEAD_SOURCE_DESCRIPTION"
+// FROM "MARTS"."SHARED"."DIM_SALES_CHANNEL";
+
+// [DIM_SPACE_DETAILS]:
+// LOAD SPACE_DETAILS_ORG, 
+// 	SPACE_CODE, 
+// 	SPACE_NAME, 
+// 	SPACE_ABBR, 
+// 	SPACE_TYPE_CODE, 
+// 	SPACE_MAP_URL, 
+// 	SPACE_BASE_COMP_IND, 
+// 	SPACE_MIN_CAPACITY, 
+// 	SPACE_CAPACITY_AMT, 
+// 	SPACE_ACCT_CODE, 
+// 	SPACE_LEAD_HRS, 
+// 	SPACE_STRIKE_HRS, 
+// 	SPACE_UPD_STAMP, 	 
+// 	SPACE_NET_AREA, 
+// 	SPACE_DETAILS_STAMP;
+
+// SELECT "SPACE_DETAILS_ORG",
+// 	"SPACE_CODE",
+// 	"SPACE_NAME",
+// 	"SPACE_ABBR",
+// 	"SPACE_TYPE_CODE",
+// 	"SPACE_MAP_URL",
+// 	"SPACE_BASE_COMP_IND",
+// 	"SPACE_MIN_CAPACITY",
+// 	"SPACE_CAPACITY_AMT",
+// 	"SPACE_ACCT_CODE",
+// 	"SPACE_LEAD_HRS",
+// 	"SPACE_STRIKE_HRS",
+// 	"SPACE_UPD_STAMP",	
+// 	"SPACE_NET_AREA",
+// 	"SPACE_DETAILS_STAMP"
+// FROM "MARTS"."SHARED"."DIM_SPACE_DETAILS";
+
+// [DIM_SPACE_TYPES]:
+// LOAD SPACE_TYPE_CODE, 
+// 	SPACE_TYPE, 	 
+// 	SPACE_TYPES_STAMP;
+
+// SELECT "SPACE_TYPE_CODE",
+// 	"SPACE_TYPE",	
+// 	"SPACE_TYPES_STAMP"
+// FROM "MARTS"."SHARED"."DIM_SPACE_TYPES";
+
+
+// [DIM_MARKET_SEGMENTS]:
+// LOAD MAJOR_SEGMENT_CODE, 
+// 	MINOR_SEGMENT_CODE, 
+// 	MARKET_SEGMENT, 
+// 	MARKET_SEGMENT_UOM, 
+// 	MARKET_SEGMENT_ENT_STAMP, 
+// 	MARKET_SEGMENT_USER_ID, 
+// 	MARKET_SEGMENT_UPD_STAMP, 
+// 	MARKET_SEGMENT_UPD_USER_ID, 
+// 	MARKET_SEGMENT_CAT_CODE, 
+// 	MARKET_SEGMENT_CATEGORY, 
+// 	MARKET_SEGMENT_CLASS, 
+// 	MARKET_SEGMENT_GROUP, 
+// 	MARKET_SEGMENTS_STAMP;
+
+// SELECT "MAJOR_SEGMENT_CODE",
+// 	"MINOR_SEGMENT_CODE",
+// 	"MARKET_SEGMENT",
+// 	"MARKET_SEGMENT_UOM",
+// 	"MARKET_SEGMENT_ENT_STAMP",
+// 	"MARKET_SEGMENT_USER_ID",
+// 	"MARKET_SEGMENT_UPD_STAMP",
+// 	"MARKET_SEGMENT_UPD_USER_ID",
+// 	"MARKET_SEGMENT_CAT_CODE",
+// 	"MARKET_SEGMENT_CATEGORY",
+// 	"MARKET_SEGMENT_CLASS",
+// 	"MARKET_SEGMENT_GROUP",
+// 	"MARKET_SEGMENTS_STAMP"
+// FROM "MARTS"."SHARED"."DIM_MARKET_SEGMENTS";
+
+Tag Fields EVENT_TYPES_ORG, 
+	EVENT_TYPE_CODE, 
+	EVENT_TYPE,REVENUE_ELEMENT_ORG, 
+	DEPARTMENT_CODE, 
+	REVENUE_ELEMENT_NAME, 
+	REVENUE_ELEMENT_STATUS, 
+	REVENUE_ELEMENT_UPD_STAMP, 
+	REVENUE_ELEMENT_STAMP with '$hidden';
+
+
+///$tab Facts
+LIB CONNECT TO 'Dev_Space:Snowflake_Sales_Perfomance';
+
+[ACCOUNTS]:
+LOAD FIRST_NAME, 
+	LAST_NAME, 
+	COMPANY_NAME, 
+	ACCOUNT_CLASS, 
+	USER_EMAIL, 
+    ACCOUNT_CODE as SALES_PERSON_ID,
+	//ORGANIZATION_CODE, 
+	STATUS, 
+	LEAD_SOURCE_CODE, 
+	LEAD_SOURCE_DESCRIPTION, 
+	MARKET_SEGMENT, 
+	EXISTING_CUSTOMER;
+
+SELECT "FIRST_NAME",
+	"LAST_NAME",
+	"COMPANY_NAME",
+	"ACCOUNT_CLASS",
+	"USER_EMAIL",
+	"ORGANIZATION_CODE",
+	"STATUS",
+	"LEAD_SOURCE_CODE",
+	"LEAD_SOURCE_DESCRIPTION",
+	"MARKET_SEGMENT",
+    ACCOUNT_CODE,
+	"EXISTING_CUSTOMER"
+FROM "MARTS"."EMPOWER"."ACCOUNTS";
+
+
+[EVENTS]:
+LOAD 
+	EVENT_ID & '|' & TENANT_ID & '|' & ORGANIZATION_CODE as %KEY_EVT_TENANT_ORG_ID,
+	EVENT_ID, 
+	EVENT_NAME, 
+	EVENT_TYPE,
+    SALES_PERSON_ID,
+	EVENT_STATUS, 
+	Date(Floor(EVENT_START_DATE)) AS EVENT_START_DATE, 
+	//Date(Floor(EVENT_END_DATE)) AS 
+    EVENT_END_DATE, 
+	Date(Floor(EVENT_BOOKING_DATE)) AS EVENT_BOOKING_DATE;
+
+SELECT "EVENT_ID",
+	"ORGANIZATION_CODE",
+	"EVENT_NAME",
+    SALES_PERSON_ID,
+	"EVENT_TYPE",
+	"EVENT_STATUS",
+	"EVENT_START_DATE",
+	"EVENT_END_DATE",
+    TENANT_ID,
+	"EVENT_BOOKING_DATE"
+FROM "MARTS"."EMPOWER"."EVENTS";
+
+[ORDERS]:
+LOAD 
+	ORDER_EVENT_ID & '|' & TENANT_ID & '|' & ORGANIZATION_CODE as %KEY_EVT_TENANT_ORG_ID,
+	ORGANIZATION_CODE AS ORGANIZATION_CODE_ORDERS, 
+	ORDER_EVENT_ID , 
+	ORDER_TYPE, 
+    SPACE_CODE,
+    DEPARTMENT_CODE,
+	REVENUE_AMOUNT, 
+	PHASE, 
+    TENANT_ID AS TENANT_ID_ORDERS,
+	ORDER_STATUS, 
+	//Date#(Floor(ORDER_DATE)) AS 
+    ORDER_DATE  where PHASE = '1' or PHASE = '5';
+
+SELECT "ORGANIZATION_CODE",
+	"ORDER_EVENT_ID",
+	"ORDER_TYPE",
+    "SPACE_CODE",
+    DEPARTMENT_CODE,
+	"REVENUE_AMOUNT",
+	"PHASE",
+    TENANT_ID,
+	"ORDER_STATUS",
+	"ORDER_DATE"
+FROM "MARTS"."EMPOWER"."ORDERS";
+
+[SPACES]:
+LOAD SPACE_CODE, 
+	SPACE_NAME, 
+    TENANT_ID,
+	SPACE_TYPE_CODE,
+	SPACE_TYPE_NAME, 
+	SPACE_BASE_COMB_IND, 
+	SPACE_MIN_CAPACITY, 
+	SPACE_CAPACITY_AMT, 
+	SPACE_LEAD_HRS, 
+	SPACE_STRIKE_HRS, 
+   // ORGANIZATION_CODE,
+	SPACE_NET_AREA;
+
+SELECT "SPACE_CODE",
+	"SPACE_NAME",
+    TENANT_ID,
+	"SPACE_TYPE_CODE",
+	"SPACE_TYPE_NAME",
+	"SPACE_BASE_COMB_IND",
+	"SPACE_MIN_CAPACITY",
+	"SPACE_CAPACITY_AMT",
+	"SPACE_LEAD_HRS",
+	"SPACE_STRIKE_HRS",
+	"ORGANIZATION_CODE",
+	"SPACE_NET_AREA"
+FROM "MARTS"."EMPOWER"."SPACES";
+
+Tag Field EVENT_START_DATE with '$date';
+
+
+Tag Fields FIRST_NAME, 
+	LAST_NAME, 
+	COMPANY_NAME, 
+	ACCOUNT_CLASS, 
+	USER_EMAIL, 
+    ACCOUNT_CODE, 
+	STATUS, 
+	LEAD_SOURCE_CODE, 
+	LEAD_SOURCE_DESCRIPTION, 
+	MARKET_SEGMENT, 
+	EXISTING_CUSTOMER,
+    EVENT_ID, 
+	EVENT_NAME, 
+	EVENT_TYPE,
+    SALES_PERSON_ID,
+	EVENT_STATUS, 
+	EVENT_START_DATE, 
+	EVENT_END_DATE, 
+	EVENT_BOOKING_DATE,
+    ORDER_EVENT_ID , 
+	ORDER_TYPE, 
+    SPACE_CODE,
+    DEPARTMENT_CODE,
+	REVENUE_AMOUNT, 
+	PHASE, 
+    TENANT_ID,
+	ORDER_STATUS ,
+    ORDER_DATE,
+    SPACE_CODE, 
+	SPACE_NAME, 
+    TENANT_ID,
+	SPACE_TYPE_CODE,
+	SPACE_TYPE_NAME, 
+	SPACE_BASE_COMB_IND, 
+	SPACE_MIN_CAPACITY, 
+	SPACE_CAPACITY_AMT, 
+	SPACE_LEAD_HRS, 
+	SPACE_STRIKE_HRS,
+	SPACE_NET_AREA,
+    %KEY_EVT_TENANT_ORG_ID,
+    ORGANIZATION_CODE_ORDERS,
+    TENANT_ID_ORDERS with '$hidden';
+///$tab Section
+// QuarterMap:
+// Mapping Load
+// RowNo() as Month,
+// 'Q' & Ceil(RowNo()/3) as Quarter
+// AutoGenerate 12;
+
+
+
+// MinMaxDates:
+// Load 
+// min(Date(EVENT_START_DATE ,'M/D/YYYY'))                                as minDate,
+// max(Date(EVENT_START_DATE ,'M/D/YYYY'))                                as maxDate
+// Resident EVENTS;
+
+// Let vMinDate = num(Peek('minDate',0,'MinMaxDates'));
+// Let vMaxDate = num(Peek('maxDate',0,'MinMaxDates'));
+// Drop Table MinMaxDates;
+
+
+// TempCalendar:
+
+// Load 
+// $(vMinDate) + IterNo() as Num,
+// Date($(vMinDate)+IterNo()-1) as TempDate
+// AutoGenerate 1 while $(vMinDate) + IterNo()-1 <= $(vMaxDate);
+
+// MasterCalendar_STARTDATE:
+// Load
+// Date(TempDate,'M/D/YYYY') as EVENT_START_DATE,
+// //Date(Floor(TempDate),'M/D/YYYY') as START_DATEONLY,
+// Date(Floor(TempDate),'M/D/YYYY') as START_DATE,
+// Week(TempDate) as START_WEEK,
+// Year(TempDate) as START_YEAR,
+// //Month(TempDate) as Start_Month,
+// Dual(Month(TempDate), Month(TempDate)) as START_MONTH,
+// Date(monthstart(TempDate), 'MMM YYYY') as START_MONTHYEAR,
+// ApplyMap('QuarterMap',Month(TempDate),Null()) AS START_QUARTER
+
+// Resident TempCalendar
+// Order by TempDate asc;
+// Drop Table TempCalendar;
+// Tag Field EVENT_START_DATE with  '$date','$hidden';
+// //Tag Field START_DATEONLY with '$date';
+// Tag Field EVENT_START_DATE with  '$date';
